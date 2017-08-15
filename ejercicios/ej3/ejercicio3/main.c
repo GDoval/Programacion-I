@@ -3,7 +3,7 @@
 
 int main()
 {
-    system("cls");
+    system("clear");
     int num1;
     int num2;
     int producto;
@@ -25,6 +25,6 @@ int main()
     producto = num1 * num2;
     cuad = num1 * num1;
     printf("El producto de ambos numeros es %d y el cuadrado del primer numero es %d : \n", producto, cuad);
-    system("pause");
+    system("clear");
     return 0;
 }
