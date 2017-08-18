@@ -9,13 +9,12 @@ int main()
     int conti = 0;
     int conto = 0;
     int contu = 0;
-    for (int x = 0; x < 20; x++)
+    for (int x = 0; x < 5; x++)
     {
         printf("Ingrese una letra: ");
-        getchar();
-        scanf("%c", &letra);
-        printf("Letra ingresada: %c", letra);
-        /*if (letra == 'a')
+        scanf(" %c", &letra);
+        //printf("Letra ingresada: %c", letra);
+        if (letra == 'a')
         {
             conta++;
         }
@@ -46,11 +45,11 @@ int main()
                     }
                 }
             }
-        }*/
+        }
     }
 
 
-    //printf("La cantidad de A es %d, la cantidad de E es %d, la cantidad de I es %d, la cantidad de O es %d, la cantidad de U es %d", conta,conte,conti,conto,contu);
+    printf("La cantidad de A es %d, la cantidad de E es %d, la cantidad de I es %d, la cantidad de O es %d, la cantidad de U es %d", conta,conte,conti,conto,contu);
 
 
     return 0;
