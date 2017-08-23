@@ -3,18 +3,19 @@
 int suma(int n1, int n2);
 int resta(int n1, int n2);
 int multi(int n1, int n2);
-int division (int n1, int n2);
+float division (int n1, int n2);
 int pedirnumero();
 int main()
 {
-    int num1, num2, s, r, m, d;
+    int num1, num2, s, r, m;
+    float d;
     num1 = pedirnumero();
     num2 = pedirnumero();
     s = suma(num1, num2);
     r = resta(num1,num2);
     m = multi(num1, num2);
     d = division(num1, num2);
-    printf("La suma es: %d ; la multiplicacion es: %d ; la division es: %d ; la resta es: %d  ", s, m, d, r);
+    printf("La suma es: %d ; la multiplicacion es: %d ; la division es: %.1f ; la resta es: %d  ", s, m, d, r);
     return 0;
 }
 
@@ -40,10 +41,10 @@ int resta(int n1, int n2)
     return resta;
 }
 
-int division(int n1, int n2)
+float division(int n1, int n2)
 {
-    int division;
-    division = n1 / n2;
+    float division;
+    division = (float)n1 / n2;
     return division;
 }
 
