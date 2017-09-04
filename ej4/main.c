@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 int buscarNumero(int, int[], int);
-int mostrarAlumno(int[], int[], int[], float[], int);
+void mostrarAlumno(int[], int[], int[], float[], int);
 int main()
 {
     int leg[] ={128, 356, 198, 215, 320};
@@ -29,7 +29,7 @@ int main()
 }
 
 
-int mostrarAlumno(int leg[], int n1[], int n2[], float prom[], int tam)
+void mostrarAlumno(int leg[], int n1[], int n2[], float prom[], int tam)
 {
     int i;
     printf("    Legajo   Nota1   Nota2  Promedio\n");
