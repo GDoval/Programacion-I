@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1504549123 source:/home/charly/CosasGit/Programacion-I/ejercicios/ej65/main.c
+	<stdio.h>
+	<stdlib.h>
+
