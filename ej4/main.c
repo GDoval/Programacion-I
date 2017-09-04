@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 int buscarNumero(int, int[], int);
+int mostrarAlumno(int[], int[], int[], float[], int);
 int main()
 {
     int leg[] ={128, 356, 198, 215, 320};
@@ -12,13 +13,7 @@ int main()
    {
         promedio[i] =(float) (n1[i] + n2[i]) / 2;
    }
-    printf("    Legajo   Nota1   Nota2  Promedio\n");
-    printf("\n------------------------------------\n");
-    for (i = 0; i < 5; i++)
-    {
-
-     printf("\n    %4d     %4d      %4d    %4.2f \n", leg[i], n1[i], n2[i], promedio[i]);
-    }
+    mostrarAlumno(leg, n1, n2, promedio, 5);
     printf("\n************************************\n");
     printf("\nIngrese un numero: ");
     scanf("%d", &num);
@@ -29,8 +24,24 @@ int main()
     }else{
         printf("\nEl legajo %d se saco un %d y un %d , promediando %.2f \n\n", num, n1[posi], n2[posi], promedio[posi] );
     }
+
     return 0;
 }
+
+
+int mostrarAlumno(int leg[], int n1[], int n2[], float prom[], int tam)
+{
+    int i;
+    printf("    Legajo   Nota1   Nota2  Promedio\n");
+    printf("\n------------------------------------\n");
+    for (i = 0; i < tam; i++)
+    {
+
+     printf("\n    %4d     %4d      %4d    %4.2f \n", leg[i], n1[i], n2[i], prom[i]);
+    }
+}
+
+
 int buscarNumero(int num, int vec[], int tam)
 {
      int resp = -1,i;
@@ -44,4 +55,3 @@ int buscarNumero(int num, int vec[], int tam)
 }
     return resp;
 }
-
