@@ -31,18 +31,15 @@ int main()
     }
     strcpy(apellido, buffer);
     apellido[cant - 1] = '\0';
-    printf("%s , %s\n", nombre, apellido);
     strupr(&nombre[0]);
     strupr(&apellido[0]);
     strlwr(&nombre[1]);
     strlwr(&apellido[1]);
-    printf("%s , %s\n", nombre, apellido);
     strcat(apellido, ",");
     strcat(apellido, " ");
     strcat(apellido, nombre);
     strcpy(apellidoNombre, apellido);
     printf("%s", apellidoNombre);
-
 
     return 0;
 }
