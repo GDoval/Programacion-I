@@ -3,6 +3,8 @@
 #include <string.h>
 #define TAM 10
 int validarCadena(char vec[], int);
+void mostrarNombre(char[]);
+void mostrarNombres(char[][TAM], int);
 int main()
 {
     char nombres[5][TAM];
@@ -18,11 +20,8 @@ int main()
         }
         strcpy(nombres[i], buffer);
     }
+    mostrarNombres(nombres, 5);
 
-    for ( int i= 0; i <5; i++)
-    {
-        printf("\n%s", nombres[i]);
-    }
     printf("\n\n");
 
     return 0;
@@ -38,4 +37,18 @@ int validarCadena(char vec[], int lengt)
         resultado = 0;
     }
     return resultado;
+}
+
+
+void mostrarNombre(char vec[])
+{
+    printf("%s\n", vec);
+}
+
+void mostrarNombres(char nombres[][TAM], int filas)
+{
+    for (int i = 0; i < filas; i++)
+    {
+        mostrarNombre(nombres[i]);
+    }
 }
