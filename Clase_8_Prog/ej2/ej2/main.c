@@ -5,6 +5,7 @@
 int validarCadena(char vec[], int);
 void mostrarNombre(char[]);
 void mostrarNombres(char[][TAM], int);
+void ordenarNombres(char [][TAM], int);
 int main()
 {
     char nombres[5][TAM];
@@ -21,6 +22,9 @@ int main()
         strcpy(nombres[i], buffer);
     }
     mostrarNombres(nombres, 5);
+    printf("\n\n");
+    ordenarNombres(nombres, 5);
+    mostrarNombres(nombres,5);
 
     printf("\n\n");
 
@@ -50,5 +54,22 @@ void mostrarNombres(char nombres[][TAM], int filas)
     for (int i = 0; i < filas; i++)
     {
         mostrarNombre(nombres[i]);
+    }
+}
+
+void ordenarNombres(char nombre[][TAM], int filas)
+{
+    char temporal[100];
+    int j;
+    for (int i = 1; i < filas; i++)
+    {
+        strcpy(temporal, nombre[i]);
+        j = i -1;
+        while ((strcmp(temporal, nombre[j]) < 0) && j >=0)
+        {
+            strcpy(nombre[j+1], nombre[j]);
+            j--;
+        }
+        strcpy(nombre[j+1], temporal);
     }
 }
