@@ -59,7 +59,7 @@ void mostrarNombres(char nombres[][TAM], int filas)
 
 void ordenarNombres(char nombre[][TAM], int filas)
 {
-    char temporal[100];
+    char temporal[TAM];
     int j;
     for (int i = 1; i < filas; i++)
     {
