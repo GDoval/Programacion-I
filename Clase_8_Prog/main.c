@@ -6,7 +6,7 @@ int validarCadena(char vec[], int);
 int main()
 {
     char nombre[TAM];
-    char buffer[100];
+    char buffer[100]
     printf("Ingrese un nombre ingrese: ");
     gets(buffer);
     while (!validarCadena(buffer, TAM)) //niega la funcion. Si la cadena es  invalida se ingresa un cero, que negado da true. Si es valida no entra al while
