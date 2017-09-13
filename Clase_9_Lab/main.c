@@ -47,7 +47,7 @@ int main()
 }
 
 
-void mostrarPersonas(ePersona personita[], int tam)
+void mostrarPersonas(ePersona personita[], int tam) // los array se pasan siempre con []
 {
 
     for (int i = 0; i < tam; i++)
