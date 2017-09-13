@@ -10,7 +10,9 @@ typedef struct { // crea el tipo de dato.
 
 int main()
 {
-    ePersona unaPersona; //crea una variable del tipo estructura. Se asigna espacio en memoria para todos los campos de la estructura
+    //ePersona otraPersona;
+    ePersona listaPersona[3];
+    /*ePersona unaPersona; //crea una variable del tipo estructura. Se asigna espacio en memoria para todos los campos de la estructura
     printf("Ingrese DNI: \n");
     scanf("%d", &unaPersona.dni);
     printf("Ingrese nombre: \n");
@@ -18,6 +20,22 @@ int main()
     gets(unaPersona.nombre);
     printf("Ingrese peso: \n");
     scanf("%f", &unaPersona.peso);
-    printf("%d //%s // %.1f", unaPersona.dni, unaPersona.nombre, unaPersona.peso);
+    otraPersona = unaPersona; // se pasan todos los campos.
+    //printf("Una persona: DNI : %d, Nombre: %s  Peso: %f \n Otra Persona:  DNI %d  Nombre: %s   Peso: %f \n", unaPersona.dni, unaPersona.nombre, unaPersona.peso, otraPersona.dni, otraPersona.nombre, otraPersona.peso);
+    */
+    for (int i = 0; i < 3; i++)
+    {
+        printf("Ingrese DNI: ");
+        scanf("%d", &listaPersona[i].dni);
+        printf("\nIngrese nombre: ");
+        setbuf(stdin, NULL);
+        gets(listaPersona[i].nombre);
+        printf("\nIngrese peso: ");
+        scanf("%f", &listaPersona[i].peso);
+    }
+    for (int i = 0; i <3 ; i++)
+    {
+        printf("\n%d // %s // %f \n", listaPersona[i].dni, listaPersona[i].nombre, listaPersona[i].peso);
+    }
     return 0;
 }
