@@ -7,6 +7,7 @@ typedef struct { // crea el tipo de dato.
     char nombre[50];
     float peso;
 }ePersona; //nombre del tipo de dato
+void mostrarPersonas(ePersona, int);
 
 int main()
 {
@@ -25,7 +26,7 @@ int main()
     */
     for (int i = 0; i < 3; i++)
     {
-        printf("Ingrese DNI: ");
+        printf("\nIngrese DNI: ");
         scanf("%d", &listaPersona[i].dni);
         printf("\nIngrese nombre: ");
         setbuf(stdin, NULL);
@@ -35,7 +36,16 @@ int main()
     }
     for (int i = 0; i <3 ; i++)
     {
-        printf("\n%d // %s // %f \n", listaPersona[i].dni, listaPersona[i].nombre, listaPersona[i].peso);
+        mostrarPersonas(listaPersona[i], 3);
     }
+
     return 0;
+}
+
+
+void mostrarPersonas(ePersona personita, int tam)
+{
+
+    printf("\n%d // %s // %f \n", personita.dni, personita.nombre, personita.peso);
+
 }
