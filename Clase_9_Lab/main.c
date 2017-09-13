@@ -14,7 +14,7 @@ int main()
     printf("Ingrese DNI: \n");
     scanf("%d", &unaPersona.dni);
     printf("Ingrese nombre: \n");
-    setbuf(stdin, NULL);
+    setbuf(stdin, NULL); // limpia el buffer. Vale en Linux. Usar siempre que se pida un char o un string.
     gets(unaPersona.nombre);
     printf("Ingrese peso: \n");
     scanf("%f", &unaPersona.peso);
