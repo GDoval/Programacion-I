@@ -2,12 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+typedef struct{
+    int dia, mes, anio;
+}eFecha;
+
 typedef struct { // crea el tipo de dato.
     int dni;
     char nombre[50];
     float peso;
+    eFecha fNac;
 }ePersona; //nombre del tipo de dato
-void mostrarPersonas(ePersona, int);
+void mostrarPersonas(ePersona[], int);
 
 int main()
 {
@@ -33,19 +38,22 @@ int main()
         gets(listaPersona[i].nombre);
         printf("\nIngrese peso: ");
         scanf("%f", &listaPersona[i].peso);
+
     }
-    for (int i = 0; i <3 ; i++)
-    {
-        mostrarPersonas(listaPersona[i], 3);
-    }
+
+    mostrarPersonas(listaPersona, 3);
 
     return 0;
 }
 
 
-void mostrarPersonas(ePersona personita, int tam)
+void mostrarPersonas(ePersona personita[], int tam)
 {
 
-    printf("\n%d // %s // %f \n", personita.dni, personita.nombre, personita.peso);
+    for (int i = 0; i < tam; i++)
+    {
+        printf("\n%d // %s // %f \n", personita[i].dni, personita[i].nombre, personita[i].peso);
+    }
+
 
 }
