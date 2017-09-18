@@ -160,18 +160,24 @@ void ingresarProgramador(eProgramador ingreso[], int tam)
         setbuf(stdin, NULL);
         fgets(ingreso[posicion].nombre, 20, stdin);
         sacarEnter(ingreso[posicion].nombre);
-        setbuf(stdin, NULL);
+        //setbuf(stdin, NULL);
         printf("Ingrese categoria del programador: a-Senior, b-SemiSenior, c-Junior: ");
-        setbuf(stdin, NULL);
-        scanf("%c", &categoria);
-        validaCate = validaChar(categoria);
-        while (validaCate == -1)
+        //setbuf(stdin, NULL);
+        fflush(stdin);
+        categoria = getchar();
+       // scanf("%c", &categoria);
+       // validaCate =;
+        while ( validaChar(categoria) == -1)
         {
-            setbuf(stdin, NULL);
+            //setbuf(stdin, NULL);
+          //  fflush(stdin);
             printf("\nError. Ingrese categoria del programador: a-Senior, b-SemiSenior, c-Junior:");
-            setbuf(stdin, NULL);
-            scanf("%c", &categoria);
-            validaCate = validaChar(categoria);
+            fflush(stdin);
+            //setbuf(stdin, NULL);
+            //scanf("%c", &categoria);
+            categoria = getchar();
+
+           // validaCate = validaChar(categoria);
         }
         ingreso[posicion].categoria = categoria;
         printf("Ingrese proyecto: ");
