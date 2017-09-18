@@ -20,6 +20,7 @@ void ingresarProgramador(eProgramador[], int);
 int buscarVacio (eProgramador[], int );
 int buscarProgramador(eProgramador[], int, int);
 void sacarEnter(char[]);
+void bajaProgramador (eProgramador[], int, int);
 
 
 //a = Senior
@@ -240,4 +241,15 @@ int validaChar(char posicion)
     return resultado;
 }
 
-
+void bajaProgramador (eProgramador lista[], int tam, int id)
+{
+    int esta;
+    esta = buscarProgramador(lista, id, tam);
+    if (esta == -1)
+    {
+        printf("El ID ingresado no existe");
+    }else
+    {
+        mostrarProgramador(lista[])
+    }
+}
