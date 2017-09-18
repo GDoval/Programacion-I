@@ -13,11 +13,13 @@ typedef struct{
 }
 eProgramador;
 void mostrarProgramador(eProgramador);
+int validaChar(char);
 void inicializarVector(eProgramador[], int);
 void mostrarProgramadores (eProgramador[], int);
 void ingresarProgramador(eProgramador[], int);
 int buscarVacio (eProgramador[], int );
 int buscarProgramador(eProgramador[], int, int);
+void sacarEnter(char[]);
 
 
 //a = Senior
@@ -106,24 +108,20 @@ void inicializarVector(eProgramador ini[], int tam)
 
 void mostrarProgramador(eProgramador programador)
 {
-    char cate[20];
-    switch(programador.categoria)
-    {
-    case 'a':
-        strcpy(cate, "Senior");
-    case 'b':
-        strcpy(cate, "SemiSenior");
-    case 'c':
-        strcpy(cate, "Junior");
-
-    }
-    printf("ID\tNombre\tCategoria\tProyecto \n\n");
-    printf("%d\t%s\t%s\t%d ", programador.id,  programador.nombre, cate, programador.proyecto);
+    char cat[11];
+    if (programador.categoria == 'a')
+        strcpy(cat, "Senior");
+    if (programador.categoria == 'b')
+        strcpy(cat, "SemiSenior");
+    if (programador.categoria == 'c')
+        strcpy(cat, "Junior");
+    printf("%d\t%s\t%s\t%d ", programador.id,  programador.nombre, cat, programador.proyecto);
 }
 
 void mostrarProgramadores (eProgramador lista[], int tam)
 {
     int flag = 0;
+    printf("ID\tNombre\tCategoria\tProyecto \n\n");
     for (int i = 0; i < tam; i++)
     {
         if (lista[i].estado != 0)
@@ -144,16 +142,14 @@ void mostrarProgramadores (eProgramador lista[], int tam)
 void ingresarProgramador(eProgramador ingreso[], int tam)
 {
     int posicion, validaId;
-    int comodin;
+    int comodin, validaCate;
+    char categoria;
     posicion = buscarVacio(ingreso, tam);
-    printf("%d\n", posicion);
     if (posicion != -1)
     {
-        ingreso[posicion].estado = 1;
         printf("Ingrese ID del programador: ");
         scanf("%d", &comodin);
         validaId = buscarProgramador(ingreso, comodin, tam);
-        printf("%d\n", validaId);
         if (validaId == -1)
         {
             printf("Ese ID ya se encuentra cargado.");
@@ -163,17 +159,24 @@ void ingresarProgramador(eProgramador ingreso[], int tam)
         printf("Ingrese nombre del programador: ");
         setbuf(stdin, NULL);
         fgets(ingreso[posicion].nombre, 20, stdin);
-        printf("Ingrese categoria del programador: a = Senior, b=SemiSenior, c=Junior: ");
-        scanf("%c", &ingreso[posicion].categoria);
-        while (ingreso[posicion].categoria != 'a' && ingreso[posicion].categoria != 'b' && ingreso[posicion].categoria != 'c')
+        sacarEnter(ingreso[posicion].nombre);
+        setbuf(stdin, NULL);
+        printf("Ingrese categoria del programador: a-Senior, b-SemiSenior, c-Junior: ");
+        setbuf(stdin, NULL);
+        scanf("%c", &categoria);
+        validaCate = validaChar(categoria);
+        while (validaCate == -1)
         {
-            printf("\nError. Por favor ingrese categoria del programador: a = Senior, b=SemiSenior, c=Junior: ");
             setbuf(stdin, NULL);
-            scanf("%c", &ingreso[posicion].categoria);
+            printf("\nError. Ingrese categoria del programador: a-Senior, b-SemiSenior, c-Junior:");
             setbuf(stdin, NULL);
+            scanf("%c", &categoria);
+            validaCate = validaChar(categoria);
         }
+        ingreso[posicion].categoria = categoria;
         printf("Ingrese proyecto: ");
         scanf("%d", &ingreso[posicion].proyecto);
+        ingreso[posicion].estado = 1;
     }else
     {
         printf("\n No hay lugar en el sistema\n");
@@ -210,3 +213,25 @@ int buscarProgramador(eProgramador listado[], int id, int tam)
     }
     return resultado;
 }
+
+
+
+void sacarEnter(char vec[]) // borra el enter que queda en la ultima posicion del string cuando se usa fgets().
+{
+    int cant;
+    cant = strlen(vec);
+    vec[cant-1] = '\0';
+}
+
+
+int validaChar(char posicion)
+{
+    int resultado = -1;
+    if (posicion == 'a' || posicion == 'b' || posicion == 'c')
+    {
+        resultado = 5;
+    }
+    return resultado;
+}
+
+
