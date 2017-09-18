@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
+#define TAM 3
 
 typedef struct{
     int id;
@@ -16,6 +17,7 @@ void inicializarVector(eProgramador[], int);
 void mostrarProgramadores (eProgramador[], int);
 void ingresarProgramador(eProgramador[], int);
 int buscarVacio (eProgramador[], int );
+int buscarProgramador(eProgramador[], int, int);
 
 
 //a = Senior
@@ -26,8 +28,8 @@ int menu();
 
 int main()
 {
-    eProgramador equipo[50];
-    inicializarVector(equipo,50);
+    eProgramador equipo[TAM];
+    inicializarVector(equipo,TAM);
     int salir = 1;
 
     do{
@@ -36,7 +38,7 @@ int main()
     case 1:
         system("cls");
         printf("Opcion1\n");
-        ingresarProgramador(equipo, 50);
+        ingresarProgramador(equipo, TAM);
         getch();
         break;
 
@@ -57,7 +59,7 @@ int main()
     case 4:
         system("cls");
         printf("Opcion4\n\n");
-        mostrarProgramadores(equipo, 50);
+        mostrarProgramadores(equipo, TAM);
         getch();
         break;
 
@@ -115,8 +117,8 @@ void mostrarProgramador(eProgramador programador)
         strcpy(cate, "Junior");
 
     }
-    printf("Nombre\tCategoria\tProyecto \n\n");
-    printf("%s\t%s\t%d ", programador.nombre, cate, programador.proyecto);
+    printf("ID\tNombre\tCategoria\tProyecto \n\n");
+    printf("%d\t%s\t%s\t%d ", programador.id,  programador.nombre, cate, programador.proyecto);
 }
 
 void mostrarProgramadores (eProgramador lista[], int tam)
@@ -141,10 +143,23 @@ void mostrarProgramadores (eProgramador lista[], int tam)
 
 void ingresarProgramador(eProgramador ingreso[], int tam)
 {
-    int posicion;
+    int posicion, validaId;
+    int comodin;
     posicion = buscarVacio(ingreso, tam);
+    printf("%d\n", posicion);
     if (posicion != -1)
     {
+        ingreso[posicion].estado = 1;
+        printf("Ingrese ID del programador: ");
+        scanf("%d", &comodin);
+        validaId = buscarProgramador(ingreso, comodin, tam);
+        printf("%d\n", validaId);
+        if (validaId == -1)
+        {
+            printf("Ese ID ya se encuentra cargado.");
+            return;
+        }
+        ingreso[posicion].id = comodin;
         printf("Ingrese nombre del programador: ");
         setbuf(stdin, NULL);
         fgets(ingreso[posicion].nombre, 20, stdin);
@@ -159,7 +174,6 @@ void ingresarProgramador(eProgramador ingreso[], int tam)
         }
         printf("Ingrese proyecto: ");
         scanf("%d", &ingreso[posicion].proyecto);
-        ingreso[posicion].estado = 1;
     }else
     {
         printf("\n No hay lugar en el sistema\n");
@@ -177,6 +191,21 @@ int buscarVacio (eProgramador listado[], int tam)
         {
             resultado = i;
             return resultado;
+        }
+    }
+    return resultado;
+}
+
+
+int buscarProgramador(eProgramador listado[], int id, int tam)
+{
+    int resultado = 5;
+    for (int i = 0; i < tam; i++)
+    {
+        if (listado[i].id == id && listado[i].estado == 1)
+        {
+            resultado = -1;
+            break;
         }
     }
     return resultado;
