@@ -9,10 +9,10 @@ typedef struct{
     char nombre[20];
     int categoria;
     int proyecto;
-    int estado;                         // Hcaer todas estas funcionaes:
+    int estado;                         // Hacer todas estas funcionaes:
     int sueldo;                       //Mostrar todos los programadores semisenior
     int cantHoras;                    //Mostrar el monto total de sueldos a pagar para los progomadores junior
-}eProgramador;                        //La/s categoria/s que tengan menos programadores
+}eProgramador;                        //La/s categoria/s que tengan menos programadores/ hacerlo pensando en 50 categorias.
 
 typedef struct{
     int id;
