@@ -52,7 +52,8 @@ int main()
         printf("%s, %d %d\n", equipo[i].nombre, equipo[i].id, equipo[i].categoria);
     printf("\n-------------------------------------\n");
     for (int i = 0; i < 3; i++)
-        printf("\n%d %s $%d\n", listaCategoria[i].id , listaCategoria[i].desc, listaCategoria[i].valorPorHora);*/
+        printf("\n%d %s $%d\n", listaCategoria[i].id , listaCategoria[i].desc, listaCategoria[i].valorPorHora);
+    printf("\n\n\n");*/
     /*do{
         switch(menu()){
 
@@ -135,10 +136,10 @@ void programadorDefault(eProgramador lista[], int tam)
                 lista[1].estado = 1;
                 lista[1].id = 2;
                 lista[1].proyecto = 20;
-                lista[1].cantHoras = 20;
+                lista[1].cantHoras = 50;
 
             case 2:
-                lista[2].categoria = 80;
+                lista[2].categoria = 70;
                 strcpy(lista[2].nombre, "Luis");
                 lista[2].estado = 1;
                 lista[2].id = 3;
@@ -173,24 +174,19 @@ void categoria (eCategoria cate[], int tam)
 
 void imprimirProg(eProgramador lista[], eCategoria cate[])
 {
-
-
     for (int i = 0; i < 3; i++)
     {
-
             for (int j = 0; j < 3; j++)
             {
                 if (lista[i].categoria == cate[j].id)
                 {
                     lista[i].sueldo = lista[i].cantHoras * cate[j].valorPorHora;
                     printf("\n%s\t%s\t\t%d\n", lista[i].nombre, cate[j].desc, lista[i].sueldo);
+                    break;
                 }
-
             }
-
-
         }
 
-    printf("\n------------------------");
+    printf("\n--------------------------------");
     printf("\n\nNombre\tCategoria\tSueldo\n\n");
 }
