@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1505912058 source:c:\users\alumno\desktop\clase_11_lab\clase_11_lab\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1505911627 source:c:\users\alumno\desktop\clase_11_lab\clase_11_lab\sad.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
