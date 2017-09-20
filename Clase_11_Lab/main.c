@@ -9,10 +9,10 @@ typedef struct{
     char nombre[20];
     int categoria;
     int proyecto;
-    int estado;
-    int sueldo;
-    int cantHoras;
-}eProgramador;
+    int estado;                         // Hcaer todas estas funcionaes:
+    int sueldo;                       //Mostrar todos los programadores semisenior
+    int cantHoras;                    //Mostrar el monto total de sueldos a pagar para los progomadores junior
+}eProgramador;                        //La/s categoria/s que tengan menos programadores
 
 typedef struct{
     int id;
@@ -22,100 +22,19 @@ typedef struct{
 void programadorDefault(eProgramador[], int);
 void imprimirProg (eProgramador[], eCategoria[]);
 void categoria (eCategoria[], int);
-/*void mostrarProgramador(eProgramador);
-int validaChar(char);
-void inicializarVector(eProgramador[], int);
-void mostrarProgramadores (eProgramador[], int);
-void ingresarProgramador(eProgramador[], int);
-int buscarVacio (eProgramador[], int );
-int buscarProgramador(eProgramador[], int, int);
-void sacarEnter(char[]);
-void bajaProgramador (eProgramador[], int, int);*/
-
-
-//a = Senior
-//b = SemiSenior
-//c = Junior
-
 int menu();
 
 int main()
 {
     eProgramador equipo[TAM];
-    //inicializarVector(equipo,TAM);
-    //int salir = 1;
     eCategoria listaCategoria[3];
     programadorDefault(equipo, 3);
     categoria(listaCategoria, 3);
     imprimirProg(equipo,listaCategoria);
-    /*for (int i = 0; i < 3; i++)
-        printf("%s, %d %d\n", equipo[i].nombre, equipo[i].id, equipo[i].categoria);
-    printf("\n-------------------------------------\n");
-    for (int i = 0; i < 3; i++)
-        printf("\n%d %s $%d\n", listaCategoria[i].id , listaCategoria[i].desc, listaCategoria[i].valorPorHora);
-    printf("\n\n\n");*/
-    /*do{
-        switch(menu()){
-
-    case 1:
-        system("cls");
-        printf("Opcion1\n");
-        //ingresarProgramador(equipo, TAM);
-        getch();
-        break;
-
-    case 2:
-        system("cls");
-        printf("Opcion2");
-        getch();
 
 
-        break;
-    case 3:
-        system("cls");
-        printf("Opcion3");
-        getch();
-
-        break;
-
-    case 4:
-        system("cls");
-        printf("Opcion4\n\n");
-        //mostrarProgramadores(equipo, TAM);
-        getch();
-        break;
-
-
-
-    case 5:
-      salir = 0;
-
-
-
-        break;
-
-        }
-
-    }while(salir);*/
     return 0;
 }
-
-
-    /*int menu(){
-        int opcion;
-        system("cls");
-        printf("\n***Programadores***\n\n\n");
-        printf("1- Alta Programador\n");
-        printf("2- Modificacion Programador\n");
-        printf("3- Baja Programador\n");
-        printf("4- Listado Programadores\n");
-        printf("5- Salir\n");
-        printf("\n\nIngrese opcion: ");
-        scanf("%d", &opcion);
-
-        return opcion;
-
-    }*/
 
 void programadorDefault(eProgramador lista[], int tam)
 {
