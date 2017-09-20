@@ -11,6 +11,7 @@ typedef struct{
     int proyecto;
     int estado;
     int sueldo;
+    int cantHoras;
 }eProgramador;
 
 typedef struct{
@@ -19,6 +20,7 @@ typedef struct{
     int valorPorHora;
 }eCategoria;
 void programadorDefault(eProgramador[], int);
+void imprimirProg (eProgramador[], eCategoria[]);
 void categoria (eCategoria[], int);
 /*void mostrarProgramador(eProgramador);
 int validaChar(char);
@@ -45,15 +47,12 @@ int main()
     eCategoria listaCategoria[3];
     programadorDefault(equipo, 3);
     categoria(listaCategoria, 3);
-    for (int i = 0; i < 3; i++)
-    {
+    imprimirProg(equipo,listaCategoria);
+    /*for (int i = 0; i < 3; i++)
         printf("%s, %d %d\n", equipo[i].nombre, equipo[i].id, equipo[i].categoria);
-
-    }
     printf("\n-------------------------------------\n");
     for (int i = 0; i < 3; i++)
-        printf("\n%d %s $%d\n", listaCategoria[i].id , listaCategoria[i].desc, listaCategoria[i].valorPorHora);
-
+        printf("\n%d %s $%d\n", listaCategoria[i].id , listaCategoria[i].desc, listaCategoria[i].valorPorHora);*/
     /*do{
         switch(menu()){
 
@@ -123,18 +122,20 @@ void programadorDefault(eProgramador lista[], int tam)
     {
         switch (i){
             case 0:
-                lista[0].categoria = 70;
+                lista[0].categoria = 80;
                 strcpy(lista[0].nombre, "Pepe");
                 lista[0].estado = 1;
                 lista[0].id = 1;
                 lista[0].proyecto = 15;
+                lista[0].cantHoras = 10;
 
             case 1:
-                lista[1].categoria = 75;
+                lista[1].categoria = 80;
                 strcpy(lista[1].nombre, "Juan");
                 lista[1].estado = 1;
                 lista[1].id = 2;
                 lista[1].proyecto = 20;
+                lista[1].cantHoras = 20;
 
             case 2:
                 lista[2].categoria = 80;
@@ -142,6 +143,7 @@ void programadorDefault(eProgramador lista[], int tam)
                 lista[2].estado = 1;
                 lista[2].id = 3;
                 lista[2].proyecto = 40;
+                lista[2].cantHoras = 10;
 
 
         }
@@ -168,3 +170,27 @@ void categoria (eCategoria cate[], int tam)
     }
 }
 
+
+void imprimirProg(eProgramador lista[], eCategoria cate[])
+{
+
+
+    for (int i = 0; i < 3; i++)
+    {
+
+            for (int j = 0; j < 3; j++)
+            {
+                if (lista[i].categoria == cate[j].id)
+                {
+                    lista[i].sueldo = lista[i].cantHoras * cate[j].valorPorHora;
+                    printf("\n%s\t%s\t\t%d\n", lista[i].nombre, cate[j].desc, lista[i].sueldo);
+                }
+
+            }
+
+
+        }
+
+    printf("\n------------------------");
+    printf("\n\nNombre\tCategoria\tSueldo\n\n");
+}
