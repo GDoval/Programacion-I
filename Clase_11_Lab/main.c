@@ -267,7 +267,7 @@ void menosProgramadores (eProgramador lista[], eCategoria cat[], int tam, int ta
         }
 
     }
-    printf("\n\n%d", min);
+    printf("\n\n%d", min);                          //Falta acomodar el printf()
     printf("\n\n\n%d", cont);
     for (int i = 0; i < vueltas; i++)
     {
