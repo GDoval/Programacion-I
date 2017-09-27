@@ -16,7 +16,7 @@ typedef struct
     int horas;
 } eProyecto;
 
-typedef struct
+typedef struct // agregar un INT con el estado para cuando haya que cargar el array manualmente
 {
     int idProg;
     int idProyec;
@@ -35,7 +35,7 @@ int main()
 {
     eProgramador equipo[4];
     eProyecto proyectos[4];
-    eProgProy listado[7];
+    eProgProy listado[7]; // tamaño del array: cant de programadores * cant de proyectos.
     char nombre[20];
     int idProg;
     programadorDefault(equipo, 4);
@@ -55,7 +55,7 @@ int main()
     for (int i = 0; i < 7; i++)
     {
         if (idProg == listado[i].idProg)
-        {
+        {int buscarProgramador(eProgramador lista[], int tam, char nombre[])
             printf("\nEl programador %s trabaja en el proyecto %d ", nombre, listado[i].idProyec);
         }
     }
