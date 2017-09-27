@@ -56,7 +56,7 @@ int main()
     {
         if (idProg == listado[i].idProg)
         {
-            printf("\nEl programador %s trabaja en el proyecto %d\n", nombre, listado[i].idProyec);
+            printf("\nEl programador %s trabaja en el proyecto %d ", nombre, listado[i].idProyec);
         }
     }
     return 0;
