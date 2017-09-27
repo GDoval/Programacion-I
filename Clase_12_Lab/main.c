@@ -56,7 +56,7 @@ int main()
     {
         if (idProg == listado[i].idProg)
         {
-            printf("\nEl programador %s trabaja en el proyecto %d", nombre, listado[i].idProyec);
+            printf("\nEl programador %s trabaja en el proyecto %d\n", nombre, listado[i].idProyec);
         }
     }
     return 0;
@@ -64,13 +64,10 @@ int main()
 
 
 
-
-
-
 int buscarProgramador(eProgramador lista[], int tam, char nombre[])
 {
     int id = -1;
-    for (int i = 0; i < tam; i++)
+    for (int i = 0; i < tam +1; i++)
     {
         if (strcmp(lista[i].nombre, nombre) == 0)
         {
@@ -81,7 +78,7 @@ int buscarProgramador(eProgramador lista[], int tam, char nombre[])
     return id;
 }
 
-void programadorDefault(eProgramador lista[], int tam)
+void programadorDefault(eProgramador lista[], int tam) // Corregir para que no quede el ID en 0. No hacer un switch
 {
     for (int i = 0; i < tam; i++)
     {
@@ -90,31 +87,31 @@ void programadorDefault(eProgramador lista[], int tam)
                 lista[0].categoria = 70;
                 strcpy(lista[0].nombre, "Pepe");
                 lista[0].estado = 1;
-                lista[0].id = 1;
+                lista[0].id = 0;
 
             case 1:
                 lista[1].categoria = 70;
                 strcpy(lista[1].nombre, "Juan");
                 lista[1].estado = 1;
-                lista[1].id = 2;
+                lista[1].id = 1;
 
             case 2:
                 lista[2].categoria = 80;
                 strcpy(lista[2].nombre, "Gaston");
                 lista[2].estado = 1;
-                lista[2].id = 3;
+                lista[2].id = 2;
 
             case 3:
                 lista[3].categoria = 80;
                 strcpy(lista[3].nombre, "Roberto");
                 lista[3].estado = 1;
-                lista[3].id = 4;
+                lista[3].id = 3;
 
             case 4:
                 lista[4].categoria = 80;
                 strcpy(lista[4].nombre, "Luis");
                 lista[4].estado = 1;
-                lista[4].id = 3;
+                lista[4].id = 4;
 
 
         }
