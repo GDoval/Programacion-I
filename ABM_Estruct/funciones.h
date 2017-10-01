@@ -100,3 +100,22 @@ void sacarEnter(char[]);
 
 void borrarProgramador (eProgramador[], int, int);
 /*------------------------------------------------------------*/
+/**brief Valida que el entero pasado como argumento sea 1, 2 ó 3
+/*param recibe un entero
+/* Devuelve 0 si la cadena no es valida, -1 si lo e
+**/
+
+int validarCate (int);
+
+/*------------------------------------------------------------*/
+
+/**brief Valida que la cadena pasada como argumento contenga solo letras
+/*param recibe un array de caracteres
+/* Devuelve 0 si la cadena no es valida, -1 si lo es
+**/
+
+int validaString (char[]);
+
+
+/*------------------------------------------------------------*/
+void modificarProgramador (eProgramador[], eProgProy[], int, int);

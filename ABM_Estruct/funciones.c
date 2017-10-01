@@ -5,7 +5,7 @@
 
 void ingresoProgramador (eProgramador lista[], eProgProy tabla[], int tam )
 {
-    int indice;
+    int indice, validar;
     indice = buscarVacio(lista, tam);
     if (indice != -1)
     {
@@ -13,15 +13,45 @@ void ingresoProgramador (eProgramador lista[], eProgProy tabla[], int tam )
         setbuf(stdin, NULL);
         fgets(lista[indice].nombre, 50, stdin);
         sacarEnter(lista[indice].nombre);
+        validar = validaString(lista[indice].nombre);
+        while (validar == 0)
+        {
+            printf("\nError! Ingrese el nombre del programador: ");
+            setbuf(stdin, NULL);
+            fgets(lista[indice].nombre, 50, stdin);
+            sacarEnter(lista[indice].nombre);
+            validar = validaString(lista[indice].nombre);
+        }
+
         printf("\nIngrese el ID del programador: ");
         scanf("%d", &lista[indice].id);
         tabla[indice].idProg = lista[indice].id;
-        printf("Ingrese la categoria del programdor: 1-Junior; 2-SemiSenior, 3-Senior: ");  //validar las tres opciones
+
+
+        printf("Ingrese la categoria del programdor: 1-Junior; 2-SemiSenior, 3-Senior: ");
         scanf("%d", &lista[indice].idCate);
+        validar = validarCate(lista[indice].idCate);
+        while (validar == -1)
+        {
+            printf("\nError! Ingrese la categoria del programdor: 1-Junior; 2-SemiSenior, 3-Senior: ");
+            scanf("%d", &lista[indice].idCate);
+            validar = validarCate(lista[indice].idCate);
+        }
+
+
+
+
         printf("Ingrese el proyecto al que pertenece el programador: ");
         scanf("%d", &lista[indice].idProye);
+
+
+
         printf("\nIngrese la cantidad de horas trabajadas: ");
         scanf("%d", &tabla[indice].horasTrabajadas);
+
+
+
+
         tabla[indice].idProyec = lista[indice].idProye;
         lista[indice].estado = 1;
         tabla[indice].estado = 1;
@@ -50,9 +80,6 @@ void imprimirProgramador (eProgramador lista[], eCategoria cates[], eProyecto pr
         }
     }
 }
-
-
-
 
 
 
@@ -110,7 +137,7 @@ int buscarVacio (eProgramador listado[], int tam)
 
 
 
-void sacarEnter(char vec[]) // borra el enter que queda en la ultima posicion del string cuando se usa fgets().
+void sacarEnter(char vec[])
 {
     int cant;
     cant = strlen(vec);
@@ -133,3 +160,78 @@ void borrarProgramador (eProgramador lista[], int cantProg, int id)
     }
 }
 
+int validarCate (int categoria)
+{
+    int respuesta = 1;
+    if (categoria != 1 && categoria != 2 && categoria != 3)
+        respuesta = -1;
+    return respuesta;
+}
+
+
+int validaString (char cadena[])
+{
+    char letra;
+    int respuesta, len;
+    letra = cadena[0];
+    len = strlen(cadena);
+    for (int i = 0; i < len; i++)
+    {
+        letra = cadena[i];
+        if (!isalpha(letra))
+        {
+            respuesta = 0;
+            break;
+        }else
+            {
+                respuesta = -1;
+            }
+    }
+
+    return respuesta;
+}
+
+
+void modificarProgramador (eProgramador lista[], eProgProy tabla[], int cantProg, int id)
+{
+        int validar;
+        for (int i = 0; i < cantProg; i++)
+        {
+            if (lista[i].id == id)
+            {
+                printf("Ingrese el nombre del programador: ");
+                setbuf(stdin, NULL);
+                fgets(lista[i].nombre, 50, stdin);
+                sacarEnter(lista[i].nombre);
+                validar = validaString(lista[i].nombre);
+                while (validar == 0)
+                {
+                    printf("\nError! Ingrese el nombre del programador: ");
+                    setbuf(stdin, NULL);
+                    fgets(lista[i].nombre, 50, stdin);
+                    sacarEnter(lista[i].nombre);
+                    validar = validaString(lista[i].nombre);
+                }
+
+                printf("\nIngrese el ID del programador: ");
+                scanf("%d", &lista[i].id);
+                tabla[i].idProg = lista[i].id;
+
+                printf("Ingrese la categoria del programdor: 1-Junior; 2-SemiSenior, 3-Senior: ");
+                scanf("%d", &lista[i].idCate);
+                validar = validarCate(lista[i].idCate);
+                while (validar == -1)
+                {
+                    printf("\nError! Ingrese la categoria del programdor: 1-Junior; 2-SemiSenior, 3-Senior: ");
+                    scanf("%d", &lista[i].idCate);
+                    validar = validarCate(lista[i].idCate);
+                }
+
+                printf("Ingrese el proyecto al que pertenece el programador: ");
+                scanf("%d", &lista[i].idProye);
+
+                printf("\nIngrese la cantidad de horas trabajadas: ");
+                scanf("%d", &tabla[i].horasTrabajadas);
+            }
+        }
+}
