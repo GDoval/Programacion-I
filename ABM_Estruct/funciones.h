@@ -1,3 +1,4 @@
+
 typedef struct{
     int id;
     char nombre[50];
@@ -32,3 +33,8 @@ typedef struct
 int buscarVacio (eProgramador[], int);
 void ingresoProgramador (eProgramador[], eProgProy[], int);
 void imprimirProgramador (eProgramador[], eCategoria[], eProyecto[], eProgProy[], int);
+int buscarProyecto (eProgramador[], int, eProgProy[], int);
+int buscarHorasTrabajo (eProgramador[], int, eProgProy[], int);
+int buscarVacio (eProgramador[], int);
+void sacarEnter(char[]);
+void borrarProgramador (eProgramador[], int, int);

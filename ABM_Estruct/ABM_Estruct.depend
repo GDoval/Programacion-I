@@ -1,6 +1,15 @@
 # depslib dependency file v1.0
-1506875949 source:/home/charly/Prueba de funciones/ABM_Estruct/main.c
+1506877221 source:/home/charly/CosasGit/Programacion-I/ABM_Estruct/funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	"funciones.h"
+
+1506877221 /home/charly/CosasGit/Programacion-I/ABM_Estruct/funciones.h
+
+1506877221 source:/home/charly/CosasGit/Programacion-I/ABM_Estruct/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
 
