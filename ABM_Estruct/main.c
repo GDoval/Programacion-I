@@ -14,7 +14,7 @@ int main()
     eCategoria categoria[] ={"Junior", 1, 25, "SemiSenior", 2, 35, "Senior", 3, 50};
     eProyecto proyectos[] = {1, "AFIP", 2, "ARBA", 3, "Sysmika", 4, "Hollander", 5, "Porcupine S.A"};
     eProgProy listado[15];
-    for (int i = 0; i < TAM; i++) //aaa
+    for (int i = 0; i < TAM; i++)
         equipo[i].estado = 0;
 
     while (res == 's')

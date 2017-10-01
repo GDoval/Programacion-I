@@ -30,11 +30,73 @@ typedef struct
     int valorHora;
 } eCategoria;
 
+
+/*------------------------------------------------------------*/
+
+
+/**brief Busca un indice vacio dentro del array pasado como argumento
+/*param recibe un array del tipo estructura
+/*param recibe un entero con la cantidad de elementos del array
+**/
+
 int buscarVacio (eProgramador[], int);
+
+/*------------------------------------------------------------*/
+
+/**brief Inserta registros dentro de una estructura
+/*param recibe un array del tipo estructura
+/*param recibe un array del tipo estructura
+/*param recibe un entero con la cantidad de elementos del array
+**/
+
 void ingresoProgramador (eProgramador[], eProgProy[], int);
+
+/*------------------------------------------------------------*/
+
+/**brief Imprime por pantalla un listado de los elementos de los arrays que se le pasan como argumento
+/*param recibe un array del tipo estructura
+/*param recibe un array del tipo estructura
+/*param recibe un array del tipo estructura
+/*param recibe un array del tipo estructura
+/*param recibe un entero con la cantidad de elementos del array
+**/
+
 void imprimirProgramador (eProgramador[], eCategoria[], eProyecto[], eProgProy[], int);
+/*------------------------------------------------------------*/
+
+/**brief Busca el campo comun entre dos estructuras relacionadas
+/*param recibe un array del tipo estructura
+/*param recibe un array del tipo estructura
+/*param recibe un entero con la cantidad de elementos del array
+/*return Retorna un entero
+**/
+
 int buscarProyecto (eProgramador[], int, eProgProy[], int);
+
+/*------------------------------------------------------------*/
+
+/**brief Busca el campo comun entre dos estructuras relacionadas
+/*param recibe un array del tipo estructura
+/*param recibe un array del tipo estructura
+/*param recibe un entero con la cantidad de elementos del array
+/*return Retorna un entero
+**/
+
 int buscarHorasTrabajo (eProgramador[], int, eProgProy[], int);
-int buscarVacio (eProgramador[], int);
+
+/*------------------------------------------------------------*/
+/**brief Reemplaza el enter que queda al final del string al leerlo con la funcion fgets() por un '\0'
+/*param recibe un array de caracteres
+**/
+
 void sacarEnter(char[]);
+/*------------------------------------------------------------*/
+
+/**brief Realiza una baja logica dentro del array que se le pasa como argumento
+/*param recibe un array del tipo estructura
+/*param recibe el entero que se usa como criterio para realizar la baja
+/*param recibe un entero con la cantidad de elementos del array
+**/
+
 void borrarProgramador (eProgramador[], int, int);
+/*------------------------------------------------------------*/
