@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1506875949 source:/home/charly/Prueba de funciones/ABM_Estruct/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
