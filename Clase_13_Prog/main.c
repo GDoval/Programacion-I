@@ -25,9 +25,9 @@ int main()
     eMateria Materias[]={{1, "Progamacion"}, {2, "Matematicas"},{3, "Quimica"}, {4, "Fisica"}, {5, "Electronica"}};
     eInscripcion Inscripciones[]={{1,2}, {1,3}, {3,2}, {4,4}, {3,5}, {3,1}, {4,1}, {1,1}, {8,1}, {9,3}, {10,2}, {10,5}, {10, 3}, {8, 1}};
 
-
+    printf("---Cantidad de alumnos inscriptos---\n");
     mostrarAlumnoConMaterias(Alumnos, Materias, Inscripciones,10, 5,15);
-    printf("\n---------------------------\n");
+    printf("\n-------------------------------------------------------\n");
     mostrarMateriasConCantidadInscriptos(Materias,Inscripciones, 5, 15);
 
     return 0;
@@ -40,7 +40,7 @@ void mostrarMateriasConCantidadInscriptos(eMateria materias[], eInscripcion insc
     for (int i = 0; i < tamMat; i++)
     {
         cont = 0;
-        printf("%s:", materias[i].descripcion);
+        printf("\n%s:", materias[i].descripcion);
         for (int j = 0; j < tamIns; j++)
         {
             if (materias[i].id == inscriptos[j].idMateria)
@@ -56,7 +56,7 @@ void mostrarAlumnoConMaterias(eAlumno lista[], eMateria materias[], eInscripcion
     for (int i = 0; i < tamAlum; i++)
     {
         flag = 0;
-        printf("\nAlumno %s, legajo %d, inscripto en: \n", lista[i].nombre, lista[i].legajo);
+        printf("\n%s\n", lista[i].nombre, lista[i].legajo);
         for (int j = 0; j < tamIns; j++)
         {
             if (lista[i].legajo == inscritos[j].legajo)
@@ -66,7 +66,7 @@ void mostrarAlumnoConMaterias(eAlumno lista[], eMateria materias[], eInscripcion
                 {
                     if (inscritos[j].idMateria == materias[k].id)
                     {
-                        printf("%s\n",materias[k].descripcion);
+                        printf("\t%s\n",materias[k].descripcion);
                     }
 
                 }
@@ -74,7 +74,7 @@ void mostrarAlumnoConMaterias(eAlumno lista[], eMateria materias[], eInscripcion
         }
         if (flag == 0)
         {
-            printf("en ninguna materia.\n");
+            printf("\tninguna materia.\n");
         }
     }
 }
