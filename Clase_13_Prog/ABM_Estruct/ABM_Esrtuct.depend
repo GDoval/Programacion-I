@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1507049105 source:/home/charly/CosasGit/Programacion-I/ABM_Esrtuct/funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1507048740 /home/charly/CosasGit/Programacion-I/ABM_Esrtuct/funciones.h
+
+1507049125 source:/home/charly/CosasGit/Programacion-I/ABM_Esrtuct/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
