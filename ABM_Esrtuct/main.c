@@ -33,7 +33,9 @@ int main()
 
             case 2:
                 imprimirProgramadorMasProyectos(equipo, proyectos, listado, TAM, 5, 15);
-                //imprimirProgramador(equipo, categoria,proyectos, listado, TAM, 3, 15);
+                //printf("\n\n\n");
+                //imprimirProgramadorConCategoria(equipo, categoria, TAM, 3);
+                //imprimirProgramador(equipo, categoria, 3, TAM);
                 break;
 
             case 3:

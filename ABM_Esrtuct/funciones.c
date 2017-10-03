@@ -65,32 +65,27 @@ void ingresoProgramador (eProgramador lista[], eProgProy tabla[], int tam, int t
 }
 
 
-void imprimirProgramador (eProgramador lista[], eCategoria cates[], eProyecto proyes[], eProgProy tabla[], int cantProg, int cantCate, int cantProy)
+void imprimirProgramador (eProgramador lista[], eCategoria cate[], int cantCate, int cantProg)
 {
 
-    int indiceProyecto, horas;
-    printf("\nNombre\tCategoria\tProyecto\n");
-    for (int i = 0; i < cantProg; i++)
+  printf("\nNombre\tID\t\Categoria\tSueldo\n");         //falta calcular e imprimir sueldo
+  for (int i = 0; i < cantProg; i++)
+  {
+    if(lista[i].estado != 0)
     {
-        if (lista[i].estado != 0)
+
+        for (int j = 0; j < cantCate; j++)
         {
-            printf("\n%s", lista[i].nombre);
-            for (int j = 0; j < cantCate; j++ )
+            if(lista[i].idCate == cate[j].idCat)
             {
-                if (cates[j].idCat == lista[i].idCate)
-                {
-                    printf("\t%s", cates[j].desc);
-                    for (int k = 0; k < cantProy; k++ )
-                    {
-                        if (lista[i].id == tabla[k].idProg)
-                        {
-                            printf("\t%s\n", proyes[k].desc);
-                        }
-                    }
-                }
+                printf("\n%s\t%d\t%s\n", lista[i].nombre, lista[i].id, cate[j].desc);
+                break;
             }
         }
+
     }
+  }
+
 }
 
 
@@ -109,7 +104,7 @@ void imprimirProgramadorMasProyectos(eProgramador lista[], eProyecto proyectos[]
                     {
                         if (tabla[j].idProyec == proyectos[k].idProyec)
                         {
-                            printf("\n\t%s", proyectos[k].desc);
+                            printf("\n\t%s\n", proyectos[k].desc);
                         }
                     }
                 }
@@ -118,7 +113,25 @@ void imprimirProgramadorMasProyectos(eProgramador lista[], eProyecto proyectos[]
     }
 }
 
+void imprimirProgramadorConCategoria (eProgramador lista[], eCategoria cate[], int cantProg, int cantCat)
+{
+    for (int i = 0; i < cantProg; i++)
+    {
+        printf("\n%s", lista[i].nombre);
+        if (lista[i].estado != 0)
+        {
+            for (int j = 0; j < cantCat; j++)
+            {
+                if (lista[i].idCate == cate[j].idCat)
+                {
+                    printf("\t\t%s", cate[j].desc);
+                    break;
+                }
+            }
+        }
+    }
 
+}
 
 int buscarProyecto (eProgramador listado[], int tam, eProgProy tabla[], int indice)
 {
@@ -189,7 +202,7 @@ void borrarProgramador (eProgramador lista[], eCategoria cate[], eProyecto proye
         if (lista[i].id == id)
         {
             printf("\n-------------------------------------------------------------------------------------------------------------\n");
-            imprimirProgramador(lista,cate,proyecto, tabla, cantProg, cantCat, cantProy);
+            //imprimirProgramador(lista,cate,proyecto, tabla, cantProg, cantCat, cantProy);
             printf("\n-------------------------------------------------------------------------------------------------------------\n");
             printf("\n¿Desea eliminar este registro? s/n ");
             setbuf(stdin, NULL);

@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1507055914 source:/home/charly/CosasGit/Programacion-I/ABM_Esrtuct/funciones.c
+1507057560 source:/home/charly/CosasGit/Programacion-I/ABM_Esrtuct/funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funciones.h"
 
-1507055914 /home/charly/CosasGit/Programacion-I/ABM_Esrtuct/funciones.h
+1507057489 /home/charly/CosasGit/Programacion-I/ABM_Esrtuct/funciones.h
 
-1507055914 source:/home/charly/CosasGit/Programacion-I/ABM_Esrtuct/main.c
+1507057619 source:/home/charly/CosasGit/Programacion-I/ABM_Esrtuct/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

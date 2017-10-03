@@ -60,7 +60,7 @@ void ingresoProgramador (eProgramador[], eProgProy[], int, int);
 /*param recibe un entero con la cantidad de elementos del array
 **/
 
-void imprimirProgramador (eProgramador[], eCategoria[], eProyecto[], eProgProy[], int, int, int);
+void imprimirProgramador (eProgramador[], eCategoria[], int, int);
 /*------------------------------------------------------------*/
 
 /**brief Busca el campo comun entre dos estructuras relacionadas
