@@ -58,7 +58,7 @@ int main()
 
             case 4:
                 system("cls");
-                imprimirAudi(autos, clientes, );
+                imprimirAudi(autos, clientes, TAM_AUTOS, TAM_DUENIOS);
                 break;
             case 5:
                 system("cls");

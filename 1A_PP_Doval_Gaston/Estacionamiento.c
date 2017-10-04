@@ -200,15 +200,52 @@ void modificarTarjeta (eDuenio lista[], int tam, int id)
 void imprimirAudi (eAlquiler autos[], eDuenio lista[], int tamAutos, int tamDuenio)
 {
    printf("Usuarios con autos AURI\n\n");
-   printf("\nNombre\tPatente");
+   printf("\nNombre\tPatente\n\n");
    for (int i = 0; i < tamAutos; i++)
     {
         for (int j = 0; j < tamDuenio; j++)
         {
             if ((autos[i].idDuenio == lista[j].idDuenio) && autos[i].marca == 3)
             {
-                printf("%s\t%s", lista[j].nombreApellido, autos[i].patente);
+                printf("\n%s\t%s\n", lista[j].nombreApellido, autos[i].patente);
             }
         }
     }
+}
+
+
+int calcularEstadia (eAlquiler autos[], int tam, int id)
+{
+    int respuesta, horario;
+    for (int i = 0; i < tam; i++)
+    {
+        if (autos[i].idDuenio == id)
+        {
+            printf("\nIngrese el horario de salida: ");
+            scanf("%d", &autos[i].horarioSalida);
+            if (autos[i].horarioEntrada < autos[i].horarioSalida)
+            {
+                horario = autos[i].horarioSalida - autos[i].horarioEntrada;
+                switch (autos[i].marca)
+                {
+                case 1:
+                    respuesta = horario * 150;
+                    break;
+                case 2:
+                    respuesta = horario *175;
+                    break;
+                case 3:
+                    respuesta = horario * 200;
+                    break;
+                case 4:
+                    respuesta = horario * 250;
+                    break;
+                }
+            }else
+            {
+                printf("\nTiempo de estadia excedido\n")
+            }
+        }
+    }
+
 }
