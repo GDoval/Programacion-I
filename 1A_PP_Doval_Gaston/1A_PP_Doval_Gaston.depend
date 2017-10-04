@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1507128125 source:d:\1a_pp_doval_gaston\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"Estacionamiento.h"
+
+1507127586 source:d:\1a_pp_doval_gaston\estacionamiento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"Estacionamiento.h"
+
+1507125616 d:\1a_pp_doval_gaston\estacionamiento.h
+
