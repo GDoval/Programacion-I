@@ -17,7 +17,7 @@ int main()
     char res ='s';
     int opcion, validar, id, horario;
     eDuenio clientes[] = {{1,"Gaston Doval", "Evergreen 255", 1564891,1}, {2, "Pepe Aramado", "Calle 123", 4578748, 1},{3,"Juan Perez", "OtraCalle 456 ", 897747,1}, {4, "Rope Lope", "Ortuzarabal 6741", 6548741, 1}};
-    eAlquiler autos[] = {{"JKO 987", 3, 1, 16, 1}, {"ZBC 123", 2, 2, 16, 1}, {"BCA 984", 3, 3, 15, 1}, {"UPB 147", 4, 4, 15,1}};
+    eAlquiler autos[] = {{"JKO 987", 3, 1, 16,18, 1}, {"ZBC 123", 2, 2, 16, 22,1}, {"BCA 984", 3, 3, 15, 18, 1}, {"UPB 147", 4, 4, 15,24, 1}};
     eAlquiler autosOrdenados[TAM_AUTOS];
     /*for (int i = 0; i < TAM_DUENIOS; i++)
     {
@@ -34,7 +34,8 @@ int main()
         printf("\n4) Imprimir auris");
         printf("\n5) Imprimir listado de autos estacionados con sus dueños");
         printf("\n6) Calcular estadia");
-        printf("\n7) Salir\n");
+        printf("\n7) Calcular total por marca");
+        printf("\n8) Salir\n");
         scanf("%d", &opcion);
         switch (opcion)
         {
@@ -96,8 +97,10 @@ int main()
                 calcularEstadia(clientes, autos, TAM_AUTOS, TAM_DUENIOS, id, horario);
                 break;
 
-
             case 7:
+                totalPorMarca(autos, TAM_AUTOS);
+                break;
+            case 8:
                 res = 'n';
                 break;
         }

@@ -15,6 +15,7 @@ typedef struct
     int marca;
     int idDuenio;
     int horarioEntrada;
+    int horarioSalida;
     int estado;
 } eAlquiler;
 

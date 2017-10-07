@@ -267,6 +267,7 @@ void calcularEstadia (eDuenio lista[], eAlquiler autos[], int tamAutos, int tamD
                 {
                     if (autos[j].horarioEntrada < salida)
                         {
+                            autos[j].horarioSalida = salida;
                             horario = salida - autos[j].horarioEntrada;
                             strcpy(patente, autos[j].patente);
                             switch (autos[j].marca)
@@ -314,4 +315,43 @@ int validaInt (int input, int lowLimit, int hiLimit)
         resultado = -1;
     }
     return resultado;
+}
+
+
+
+
+
+void totalPorMarca ( eAlquiler autos[], int tamAutos)
+{
+
+    int acum1 = 0, acum2 = 0, acum3 = 0, acum4 = 0;
+    int resultado;
+    for (int i = 0; i < tamAutos; i++)
+    {
+        if (autos[i].estado != 0)
+        {
+            resultado = 0;
+            switch(autos[i].marca)
+            {
+                case 1:
+                    resultado = (autos[i].horarioSalida - autos[i].horarioEntrada) * 150;
+                    acum1 = acum1 + resultado;
+                    break;
+                case 2:
+                    resultado = (autos[i].horarioSalida - autos[i].horarioEntrada) * 175;
+                    acum2 = acum2 + resultado;
+                    break;
+                case 3:
+                    resultado = (autos[i].horarioSalida - autos[i].horarioEntrada) * 200;
+                    acum3 = acum3 + resultado;
+                    break;
+                case 4:
+                    resultado = (autos[i].horarioSalida - autos[i].horarioEntrada) * 250;
+                    acum4 = acum4 + resultado;
+                    break;
+            }
+        }
+    }
+    printf("\nALPHA_ROMEO\tFERRARI\tAUDIO\tOTROS\n");
+    printf("%d\t%d\t%d\t%d\n\n", acum1, acum2, acum3, acum4);
 }
