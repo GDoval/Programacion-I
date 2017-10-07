@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1507409833 source:/home/charly/CosasGit/Programacion-I/Parcial_Laboratorio_Gaston_Doval/Estacionamiento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"Estacionamiento.h"
+
+1507403568 /home/charly/CosasGit/Programacion-I/Parcial_Laboratorio_Gaston_Doval/Estacionamiento.h
+
+1507408923 source:/home/charly/CosasGit/Programacion-I/Parcial_Laboratorio_Gaston_Doval/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"Estacionamiento.h"
+
