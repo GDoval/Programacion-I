@@ -7,9 +7,13 @@ int main()
 {
     int x = 5;
     int y = 18;
-    int vec[] = {6,7,4,5,9};
-    mostrarVector(vec, 5);
-    printf("\n\nValores antes del swap\n\n");
+    int vec[5];
+    for (int i = 0; i < 5; i++)
+    {
+        printf("\nIngrese un numero: ");
+        scanf("%d", (vec+i)); //sin & (ampersar) xq vec ya tiene guardada la direccion de memoria de donde empieza el vector.
+    }
+    /*printf("\n\nValores antes del swap\n\n");
     printf("X = %d\n", x);
     printf("Y = %d\n", y);
 
@@ -17,7 +21,8 @@ int main()
 
     printf("\nValores despues del swap y en el main\n\n");
     printf("X = %d\n", x);
-    printf("Y = %d\n", y);
+    printf("Y = %d\n", y);*/
+    mostrarVector(vec, 5);
     return 0;
 }
 
