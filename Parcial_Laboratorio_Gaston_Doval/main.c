@@ -16,15 +16,16 @@ int main()
 {
     char res ='s';
     int opcion, validar, id, horario;
-    eDuenio clientes[] = {{1,"Gaston Doval", "Evergreen 255", 1564891,1}, {2, "Pepe Aramado", "Calle 123", 4578748, 1},{3,"Juan Perez", "OtraCalle 456 ", 897747,1}, {4, "Rope Lope", "Ortuzarabal 6741", 6548741, 1}};
-    eAlquiler autos[] = {{"JKO 987", 3, 1, 16,18, 1}, {"ZBC 123", 2, 2, 16, 22,1}, {"BCA 984", 3, 3, 15, 18, 1}, {"UPB 147", 4, 4, 15,24, 1}};
+    char patente[8];
+    eDuenio clientes[TAM_DUENIOS]; //{{1,"Gaston Doval", "Evergreen 255", 1564891,1}, {2, "Pepe Aramado", "Calle 123", 4578748, 1},{3,"Juan Perez", "OtraCalle 456 ", 897747,1}, {4, "Rope Lope", "Ortuzarabal 6741", 6548741, 1}};
+    eAlquiler autos[TAM_AUTOS]; //{{"JKO 987", 3, 1, 16,18, 1}, {"ZBC 123", 2, 2, 16, 22,1}, {"BCA 984", 3, 3, 15, 18, 1}, {"UPB 147", 4, 4, 15,24, 1}};
     eAlquiler autosOrdenados[TAM_AUTOS];
-    /*for (int i = 0; i < TAM_DUENIOS; i++)
+    for (int i = 0; i < TAM_DUENIOS; i++)
     {
         clientes[i].estado = 0;
         clientes[i].idDuenio = 0;
         autos[i].estado = 0;
-    }*/
+    }
 
     while (res == 's')
     {
@@ -35,19 +36,22 @@ int main()
         printf("\n5) Imprimir listado de autos estacionados con sus dueños");
         printf("\n6) Calcular estadia");
         printf("\n7) Calcular total por marca");
-        printf("\n8) Salir\n");
+        printf("\n8) Calcular total del estacionamiento");
+        printf("\n9) Salir\n");
         scanf("%d", &opcion);
         switch (opcion)
         {
             case 1:
+                system("clear");
                 ingresoDuenio(clientes, TAM_DUENIOS);
                 break;
             case 2:
+                system("clear");
                 ingresoAuto(autos, clientes, TAM_AUTOS, TAM_DUENIOS);
                 break;
 
             case 3:
-                system("cls");
+                system("clear");
                 printf("Ingrese su ID: ");
                 scanf("%d", &id);
                 validar = idDuenio(clientes, TAM_DUENIOS, id);
@@ -61,11 +65,11 @@ int main()
                 break;
 
             case 4:
-                system("cls");
+                system("clear");
                 imprimirAudi(autos, clientes, TAM_AUTOS, TAM_DUENIOS);
                 break;
             case 5:
-                system("cls");
+                system("clear");
                 for (int  i = 0; i < TAM_AUTOS; i++)
                 {
                     autosOrdenados[i] = autos[i];
@@ -76,15 +80,12 @@ int main()
                 break;
             case 6:
                 system("clear");
-                printf("Ingrese ID del cliente: ");
-                scanf("%d", &id);
-                validar = idDuenio(clientes, TAM_DUENIOS, id);
-                 while (validar == -1)
-                {
-                    printf("\n Error! El ID ingrsado no corresponde a un duenio. Reingrese: ");
-                    scanf("%d", &id);
-                    validar = idDuenio(clientes, TAM_DUENIOS, id);
-                }
+                printf("Ingrese patente del auto: ");
+                setbuf(stdin, NULL);
+                fgets(patente, 8, stdin);
+                sacarEnter(patente);
+
+
                 printf("\nIngrese el horario de salida: ");
                 scanf("%d", &horario);
                 validar = validaInt(horario,0, 24);
@@ -94,13 +95,18 @@ int main()
                     scanf("%d", &horario);
                     validar = validaInt(horario,1,24);
                 }
-                calcularEstadia(clientes, autos, TAM_AUTOS, TAM_DUENIOS, id, horario);
+                calcularEstadia(clientes, autos, TAM_AUTOS, TAM_DUENIOS, patente, horario);
                 break;
 
             case 7:
+                system("clear");
                 totalPorMarca(autos, TAM_AUTOS);
                 break;
             case 8:
+                system("clear");
+                totalEstacionamiento(autos, TAM_AUTOS);
+                break;
+            case 9:
                 res = 'n';
                 break;
         }

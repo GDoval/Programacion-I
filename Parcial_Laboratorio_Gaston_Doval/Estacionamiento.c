@@ -169,6 +169,8 @@ void ordenarAutosHorario (eAlquiler autos[], int tam)
         }
     }
 }
+
+
 void imprimirListado (eDuenio clientes[], eAlquiler autos[], int tamClientes, int tamAutos)
 {
     printf("Duenio    \t Auto\t   Horario de Entrada\tPatente  \tTarjeta de credito");
@@ -252,57 +254,70 @@ void imprimirAudi (eAlquiler autos[], eDuenio lista[], int tamAutos, int tamDuen
 }
 
 
-void calcularEstadia (eDuenio lista[], eAlquiler autos[], int tamAutos, int tamDuenios, int id, int salida)
+void calcularEstadia (eDuenio lista[], eAlquiler autos[], int tamAutos, int tamDuenios, char patente[], int salida)
 {
-    int respuesta = 0, horario, flag = 0;
-    char nombre[60], patente[7], modelo[15];
-    for (int i = 0; i < tamDuenios; i++)
-    {
-        if(lista[i].idDuenio == id)
+    int respuesta = 0, horario, flag = 0, flag2 = 0;
+    int id;
+    char nombre[60], modelo[15];
+        for (int j = 0; j < tamAutos; j++)
         {
-            strcpy(nombre, lista[i].nombreApellido);
-            for (int j = 0; j < tamAutos; j++)
+            if (strcmp(patente, autos[j].patente) == 0)
             {
-                if (lista[i].idDuenio == autos[j].idDuenio)
+                flag2 = 1;
+                id = autos[j].idDuenio;
+                if (autos[j].horarioEntrada < salida)
                 {
-                    if (autos[j].horarioEntrada < salida)
-                        {
-                            autos[j].horarioSalida = salida;
-                            horario = salida - autos[j].horarioEntrada;
-                            strcpy(patente, autos[j].patente);
-                            switch (autos[j].marca)
-                            {
-                            case 1:
-                                respuesta = horario * 150;
-                                strcpy(modelo, "ALPHA_ROMEO");
-                                break;
-                            case 2:
-                                respuesta = horario *175;
-                                strcpy(modelo, "FERRARI");
-                                break;
-                            case 3:
-                                respuesta = horario * 200;
-                                strcpy(modelo, "AUDI");
-                                break;
-                            case 4:
-                                respuesta = horario * 250;
-                                strcpy(modelo, "OTROS");
-                                break;
-                            }
-                        }else
-                            {
-                                flag = 1;
-                                printf("\nTiempo de estadia excedido\n");
-                                break;
-                            }
+                    autos[j].horarioSalida = salida;
+                    horario = salida - autos[j].horarioEntrada;
+                    strcpy(patente, autos[j].patente);
+                    switch (autos[j].marca)
+                    {
+                    case 1:
+                        respuesta = horario * 150;
+                        strcpy(modelo, "ALPHA_ROMEO");
+                        break;
+                    case 2:
+                        respuesta = horario *175;
+                        strcpy(modelo, "FERRARI");
+                        break;
+                    case 3:
+                        respuesta = horario * 200;
+                        strcpy(modelo, "AUDI");
+                        break;
+                    case 4:
+                        respuesta = horario * 250;
+                        strcpy(modelo, "OTROS");
+                        break;
+                    }
+                }else
+                {
+                    flag = 1;
+                    printf("\n\nTiempo de estadia excedido.\n\n");
+                    break;
                 }
             }
         }
-    }
-    if (flag == 0)
+
+    for (int i = 0; i < tamDuenios; i++)
     {
-        printf("\nNombre     Patente      Marca     Tarifa\n");
-        printf("\n%s        %s        %s     %d\n\n",nombre, patente, modelo, respuesta);
+        if (id == lista[i].idDuenio)
+        {
+            strcpy(nombre, lista[i].nombreApellido);
+            break;
+        }
+
+    }
+    if (flag2 == 0)
+    {
+        printf("\n\nLa patente ingresada no se encuentra en la base de datos\n\n");
+
+    }else
+    {
+        if (flag == 0)
+        {
+            printf("\nNombre     Patente      Marca     Tarifa\n");
+            printf("\n%s        %s        %s     %d\n\n",nombre, patente, modelo, respuesta);
+        }
     }
 }
 
@@ -316,8 +331,6 @@ int validaInt (int input, int lowLimit, int hiLimit)
     }
     return resultado;
 }
-
-
 
 
 
@@ -355,3 +368,49 @@ void totalPorMarca ( eAlquiler autos[], int tamAutos)
     printf("\nALPHA_ROMEO\tFERRARI\tAUDIO\tOTROS\n");
     printf("%d\t%d\t%d\t%d\n\n", acum1, acum2, acum3, acum4);
 }
+
+
+
+
+void totalEstacionamiento (eAlquiler autos[], int tam)
+{
+    int acum[4];
+    int resultado;
+    for (int i = 0; i < 4; i++)
+        acum[i] = 0;
+    for (int i = 0; i < tam; i++)
+    {
+        if (autos[i].estado != 0)
+        {
+            resultado = 0;
+            switch(autos[i].marca)
+            {
+                case 1:
+                    resultado = (autos[i].horarioSalida - autos[i].horarioEntrada) * 150;
+                    acum[0] = acum[0] + resultado;
+                    break;
+                case 2:
+                    resultado = (autos[i].horarioSalida - autos[i].horarioEntrada) * 175;
+                    acum[1] = acum[1] + resultado;
+                    break;
+                case 3:
+                    resultado = (autos[i].horarioSalida - autos[i].horarioEntrada) * 200;
+                    acum[2] = acum[2] + resultado;
+                    break;
+                case 4:
+                    resultado = (autos[i].horarioSalida - autos[i].horarioEntrada) * 250;
+                    acum[3] = acum[3] + resultado;
+                    break;
+            }
+        }
+    }resultado = 0;
+    resultado = acum[0] + acum[1] + acum[2] + acum[3];
+    printf("\nEl total facturado por el estacionamiento es de: $ %d\n\n", resultado);
+
+}
+
+
+
+
+
+
