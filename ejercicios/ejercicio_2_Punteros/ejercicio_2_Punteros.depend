@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1507751211 source:/home/charly/CosasGit/Programacion-I/ejercicios/ejercicio_2_Punteros/main.c
+	<stdio.h>
+	<stdlib.h>
+
