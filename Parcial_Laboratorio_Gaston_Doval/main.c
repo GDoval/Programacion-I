@@ -25,6 +25,7 @@ int main()
         clientes[i].estado = 0;
         clientes[i].idDuenio = 0;
         autos[i].estado = 0;
+        autos[i].horarioSalida = 0;
     }
 
     while (res == 's')
@@ -82,7 +83,7 @@ int main()
                 system("clear");
                 printf("Ingrese patente del auto: ");
                 setbuf(stdin, NULL);
-                fgets(patente, 8, stdin);
+                fgets(patente, 15, stdin);
                 sacarEnter(patente);
 
 
