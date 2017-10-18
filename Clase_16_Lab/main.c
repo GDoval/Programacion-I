@@ -31,6 +31,7 @@ int main()
         if(seguirCargando == 1)
         {
 // Calculamos el nuevo tamaño del array
+            logitudPersonas++; //Incremento el contador de personas
             auxNuevaLogitud = sizeof(struct persona) * logitudPersonas;
 // Redimencionamos la lista
             pAuxPersona = realloc( pArrayPersona, auxNuevaLogitud);
@@ -39,7 +40,7 @@ int main()
                 printf("\nNo hay lugar en memoria\n");
                 break;
             }
-            logitudPersonas++; //Incremento el contador de personas
+
             pArrayPersona = pAuxPersona;
         }
         else
