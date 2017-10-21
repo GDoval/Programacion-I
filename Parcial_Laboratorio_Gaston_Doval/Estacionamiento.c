@@ -27,7 +27,15 @@ void ingresoDuenio (eDuenio lista[], int tam)
         setbuf(stdin, NULL);
         fgets(lista[indice].nombreApellido, 60, stdin);
         sacarEnter(lista[indice].nombreApellido);
-
+        validar = validaString(lista[indice].nombreApellido);
+        while (validar != -1)
+        {
+            printf("\nError! Reingrese: ");
+            setbuf(stdin, NULL);
+            fgets(lista[indice].nombreApellido, 60, stdin);
+            sacarEnter(lista[indice].nombreApellido);
+            validar = validaString(lista[indice].nombreApellido);
+        }
 
         printf("\nIngrese la direccion de cliente: ");
         setbuf(stdin, NULL);
@@ -173,7 +181,7 @@ void ordenarAutosHorario (eAlquiler autos[], int tam)
 
 void imprimirListado (eDuenio clientes[], eAlquiler autos[], int tamClientes, int tamAutos)
 {
-    printf("Duenio    \t Auto\t   Horario de Entrada\tPatente  \tTarjeta de credito");
+    printf("Duenio    \t Auto\t   Horario de Entrada\tPatente \tN° de Tarjeta");
     printf("\n----------------------------------------------------------------------------\n");
     char coche[20];
     for (int i = 0; i < tamAutos; i++)
@@ -410,7 +418,67 @@ void totalEstacionamiento (eAlquiler autos[], int tam)
 }
 
 
-
-
+int validaString (char cadena[])
+{
+    char letra;
+    char buffer[30], buffer2[30];
+    int len, k, i = 0, f = 0;
+    int respuesta, respuesta2;
+    letra = cadena[0];
+    len = strlen(cadena);
+    while (cadena[i] != 32)         //Como la variable es compuesta por nombre y apellido primero se corrobora que el nombre no tenga errores
+    {                               // y despues lo mismo pero con el apellido. Para eso se usan dos buffer para eliminar el espacio en blanco que queda
+        i++;                        // entre los dos y que la funcion isalpha() toma como caracter invalido.
+    }
+    for (int j = 0; j < i; j++)
+    {
+        buffer[j] = cadena[j];
+    }
+    i++;
+    k = i;
+    while (cadena[i] != 32 && i <= len)
+    {
+        i++;
+    }
+    for (int j = k; j < i; j++)
+    {
+        buffer2[f] = cadena[j];
+        f++;
+    }
+    len = strlen(buffer);
+    letra = buffer[0];
+    for (int i = 0; i < len; i++)
+    {
+        letra = buffer[i];
+        if (!isalpha(letra))
+        {
+            respuesta = 0;
+            break;
+        }else
+            {
+                respuesta = -1;
+            }
+    }
+    len = strlen(buffer2);
+    letra = buffer2[0];
+    for (int i = 0; i < len; i++)
+    {
+        letra = buffer2[i];
+        if (!isalpha(letra))
+        {
+            respuesta2 = 0;
+            break;
+        }else
+            {
+                respuesta2 = -1;
+            }
+    }
+    if (respuesta == -1 && respuesta2 == -1)
+        return respuesta;
+    else{
+        respuesta = 0;
+        return respuesta;
+    }
+}
 
 

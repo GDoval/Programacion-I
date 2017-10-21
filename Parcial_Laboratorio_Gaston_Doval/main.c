@@ -17,16 +17,21 @@ int main()
     char res ='s';
     int opcion, validar, id, horario;
     char patente[8];
-    eDuenio clientes[TAM_DUENIOS]; //{{1,"Gaston Doval", "Evergreen 255", 1564891,1}, {2, "Pepe Aramado", "Calle 123", 4578748, 1},{3,"Juan Perez", "OtraCalle 456 ", 897747,1}, {4, "Rope Lope", "Ortuzarabal 6741", 6548741, 1}};
-    eAlquiler autos[TAM_AUTOS]; //{{"JKO 987", 3, 1, 16,18, 1}, {"ZBC 123", 2, 2, 16, 22,1}, {"BCA 984", 3, 3, 15, 18, 1}, {"UPB 147", 4, 4, 15,24, 1}};
+    eDuenio clientes[TAM_DUENIOS] = {{1,"Gaston Doval", "Evergreen 255", 1564891,1}, {2, "Pepe Aramado", "Calle 123", 4578748, 1},{3,"Juan Perez", "OtraCalle 456 ", 897747,1}, {4, "Rope Lope", "Ortuzarabal 6741", 6548741, 1}};
+    eAlquiler autos[TAM_AUTOS] = {{"JKO 987", 3, 1, 16,18, 1}, {"ZBC 123", 2, 2, 16, 22,1}, {"BCA 984", 3, 3, 15, 18, 1}, {"UPB 147", 4, 4, 15,24, 1}};
     eAlquiler autosOrdenados[TAM_AUTOS];
-    for (int i = 0; i < TAM_DUENIOS; i++)
+    /*for (int i = 0; i < TAM_DUENIOS; i++)
     {
         clientes[i].estado = 0;
         clientes[i].idDuenio = 0;
-        autos[i].estado = 0;
+
+    }*/
+    for (int i = 0; i < TAM_AUTOS; i++)
+    {
+        //autos[i].estado = 0;
         autos[i].horarioSalida = 0;
     }
+
 
     while (res == 's')
     {
