@@ -25,7 +25,7 @@ typedef struct
 /**brief Busca un índice vacio dentro de una variable de tipo estructura
 /*param recibe un array del tipo estructura
 /*param recibe un entero con la cantidad de elementos del array
-/*return devuelve un entero con el indice vacío, o un 0 si el array se encuentra lleno
+/*return devuelve un entero con el indice vacío, o un -1 si el array se encuentra lleno
 **/
 
 int buscarVacioDuenios(eDuenio[], int);
@@ -52,7 +52,7 @@ void ingresoDuenio (eDuenio[], int);
 /**brief Busca un índice vacio dentro de una variable de tipo estructura
 /*param recibe un array del tipo estructura
 /*param recibe un entero con la cantidad de elementos del array
-/*return devuelve un entero con el indice vacío, o un 0 si el array se encuentra lleno
+/*return devuelve un entero con el indice vacío, o un -1 si el array se encuentra lleno
 **/
 int buscarVacioAlquiler(eAlquiler[], int);
 
@@ -89,7 +89,7 @@ void imprimirListado (eDuenio[], eAlquiler[], int, int);
 /*param recibe un array del tipo estructura
 /*param recibe un entero con la cantidad de elementos del array
 /*param recibe el entero a buscar
-/*return devuelve un 1 si se encontro el entero dentro de la estructura, o un 0 en caso contrario
+/*return devuelve un 1 si se encontro el entero dentro de la estructura, o un -1 en caso contrario
 **/
 int idDuenio(eDuenio[], int, int);
 
@@ -120,6 +120,7 @@ void imprimirAudi (eAlquiler[], eDuenio[], int, int);
 /*param recibe un array del tipo estructura
 /*param recibe un entero con la cantidad de elementos del array
 /*param recibe un array de caracteres que es el criterio a partir del cual se realiza la busqueda
+/*param recibe un entero que indica el horario de salida
 **/
 void calcularEstadia (eDuenio[], eAlquiler[], int, int, char[], int);
 

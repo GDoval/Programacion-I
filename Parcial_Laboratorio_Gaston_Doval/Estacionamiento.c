@@ -20,9 +20,9 @@ void ingresoDuenio (eDuenio lista[], int tam)
             printf("\nError! El ID ingresado ya se encuentra asociado a un cliente. Reingrese: ");
             scanf("%d", &id);
             validar = idDuenio(lista,tam, id);
-
         }
         lista[indice].idDuenio = id;
+
         printf("\nIngrese nombre y apellido del cliente: ");
         setbuf(stdin, NULL);
         fgets(lista[indice].nombreApellido, 60, stdin);
@@ -41,8 +41,6 @@ void ingresoDuenio (eDuenio lista[], int tam)
         setbuf(stdin, NULL);
         fgets(lista[indice].direccion, 30, stdin);
         sacarEnter(lista[indice].direccion);
-
-
 
         printf("\nIngrese el numero de la tarjeta de credito del cliente: ");
         scanf("%d", &lista[indice].tarjetaCredito);
@@ -66,7 +64,6 @@ void ingresoAuto (eAlquiler autos[], eDuenio lista[], int tam, int tamDuenios)
         setbuf(stdin, NULL);
         fgets(autos[indice].patente, 15, stdin);
         sacarEnter(autos[indice].patente);
-
 
         printf("\nIngrese marca del auto: 1-ALPHA ROMEO; 2-FERRARI; 3-AUDI; 4-OTROS: ");
         scanf("%d", &autos[indice].marca);
@@ -94,7 +91,7 @@ void ingresoAuto (eAlquiler autos[], eDuenio lista[], int tam, int tamDuenios)
 
         printf("\nIngrese horario de entrada en horas: ");
         scanf("%d", &autos[indice].horarioEntrada);
-        validar = validaInt(autos[indice].horarioEntrada,0, 24);
+        validar = validaInt(autos[indice].horarioEntrada,1, 24);
         while (validar == -1)
         {
             printf("\nError! Por favor ingrese un horario entre 1 y 24: ");
@@ -277,7 +274,7 @@ void calcularEstadia (eDuenio lista[], eAlquiler autos[], int tamAutos, int tamD
                 {
                     autos[j].horarioSalida = salida;
                     horario = salida - autos[j].horarioEntrada;
-                    strcpy(patente, autos[j].patente);
+                    //strcpy(patente, autos[j].patente);
                     switch (autos[j].marca)
                     {
                     case 1:
