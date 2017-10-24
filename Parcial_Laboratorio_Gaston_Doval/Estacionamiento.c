@@ -198,11 +198,11 @@ void imprimirListado (eDuenio clientes[], eAlquiler autos[], int tamClientes, in
             }
             for (int j = 0; j < tamClientes; j++)
             {
-                if (clientes[j].estado != 0)
+                if (clientes[j].estado != 0 && autos[i].estado != 0)
                 {
                     if (clientes[j].idDuenio == autos[i].idDuenio)
                     {
-                        printf("\nNombre: %s\nAuto: %s\nHorario de entrada: %d\nPatente: %s\nTarjeta: %li\n", clientes[j].nombreApellido,coche, autos[i].horarioEntrada, autos[i].patente, clientes[j].tarjetaCredito);
+                        printf("\nID: %d\nNombre: %s\nAuto: %s\nHorario de entrada: %dhs\nPatente: %s\nTarjeta: %li\n",clientes[j].idDuenio, clientes[j].nombreApellido,coche, autos[i].horarioEntrada, autos[i].patente, clientes[j].tarjetaCredito);
                         printf("\n------------------------------------------------------------------------------\n");
                     }
                 }
@@ -266,7 +266,7 @@ void calcularEstadia (eDuenio lista[], eAlquiler autos[], int tamAutos, int tamD
     char nombre[60], modelo[15];
         for (int j = 0; j < tamAutos; j++)
         {
-            if (strcmp(patente, autos[j].patente) == 0)
+            if (strcmp(patente, autos[j].patente) == 0 && autos[j].estado == 1)
             {
                 flag2 = 1;
                 id = autos[j].idDuenio;
@@ -274,7 +274,7 @@ void calcularEstadia (eDuenio lista[], eAlquiler autos[], int tamAutos, int tamD
                 {
                     autos[j].horarioSalida = salida;
                     horario = salida - autos[j].horarioEntrada;
-                    //strcpy(patente, autos[j].patente);
+                    autos[j].estado = 0;
                     switch (autos[j].marca)
                     {
                     case 1:
