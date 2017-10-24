@@ -29,7 +29,7 @@ int main()
     for (int i = 0; i < TAM_AUTOS; i++)
     {
         //autos[i].estado = 0;
-        autos[i].horarioSalida = 0;
+        //autos[i].horarioSalida = 0;
     }
 
 

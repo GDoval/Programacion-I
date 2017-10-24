@@ -5,7 +5,7 @@ typedef struct
     int idDuenio;
     char nombreApellido[60];
     char direccion[30];
-    int tarjetaCredito;
+    long int tarjetaCredito;
     int estado;
 }eDuenio;
 

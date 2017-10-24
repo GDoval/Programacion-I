@@ -43,7 +43,7 @@ void ingresoDuenio (eDuenio lista[], int tam)
         sacarEnter(lista[indice].direccion);
 
         printf("\nIngrese el numero de la tarjeta de credito del cliente: ");
-        scanf("%d", &lista[indice].tarjetaCredito);
+        scanf("%li", &lista[indice].tarjetaCredito);
         lista[indice].estado = 1;
 
 
@@ -178,8 +178,6 @@ void ordenarAutosHorario (eAlquiler autos[], int tam)
 
 void imprimirListado (eDuenio clientes[], eAlquiler autos[], int tamClientes, int tamAutos)
 {
-    printf("Duenio    \t Auto\t   Horario de Entrada\tPatente \tN° de Tarjeta");
-    printf("\n----------------------------------------------------------------------------\n");
     char coche[20];
     for (int i = 0; i < tamAutos; i++)
     {
@@ -204,7 +202,8 @@ void imprimirListado (eDuenio clientes[], eAlquiler autos[], int tamClientes, in
                 {
                     if (clientes[j].idDuenio == autos[i].idDuenio)
                     {
-                        printf("\n%s   \t%s   %d\t    %s  \t      %d\n", clientes[j].nombreApellido,coche, autos[i].horarioEntrada, autos[i].patente, clientes[j].tarjetaCredito);
+                        printf("\nNombre: %s\nAuto: %s\nHorario de entrada: %d\nPatente: %s\nTarjeta: %li\n", clientes[j].nombreApellido,coche, autos[i].horarioEntrada, autos[i].patente, clientes[j].tarjetaCredito);
+                        printf("\n------------------------------------------------------------------------------\n");
                     }
                 }
 
@@ -237,7 +236,7 @@ void modificarTarjeta (eDuenio lista[], int tam, int id)
         if (lista[i].idDuenio == id)
         {
             printf("\nIngrese nuevo numero de tarjeta de credito: ");
-            scanf("%d", &lista[i].tarjetaCredito);
+            scanf("%li", &lista[i].tarjetaCredito);
         }
     }
 }
@@ -245,14 +244,15 @@ void modificarTarjeta (eDuenio lista[], int tam, int id)
 void imprimirAudi (eAlquiler autos[], eDuenio lista[], int tamAutos, int tamDuenio)
 {
    printf("Usuarios con autos AURI\n\n");
-   printf("\nNombre\tPatente\n\n");
+   printf("-----------------------------");
    for (int i = 0; i < tamAutos; i++)
     {
         for (int j = 0; j < tamDuenio; j++)
         {
             if ((autos[i].idDuenio == lista[j].idDuenio) && autos[i].marca == 3)
             {
-                printf("\n%s\t%s\n", lista[j].nombreApellido, autos[i].patente);
+                printf("\nNombre: %s\nPatente: %s\n", lista[j].nombreApellido, autos[i].patente);
+                printf("\n-----------------------------\n");
             }
         }
     }
@@ -320,8 +320,8 @@ void calcularEstadia (eDuenio lista[], eAlquiler autos[], int tamAutos, int tamD
     {
         if (flag == 0)
         {
-            printf("\nNombre     Patente      Marca     Tarifa\n");
-            printf("\n%s        %s        %s     %d\n\n",nombre, patente, modelo, respuesta);
+            printf("\nNombre: %s\nPatente: %s\nMarca: %s\nTarifa: %d\n\n",nombre, patente, modelo, respuesta);
+            printf("\n------------------------------------------------------\n");
         }
     }
 }
@@ -370,8 +370,7 @@ void totalPorMarca ( eAlquiler autos[], int tamAutos)
             }
         }
     }
-    printf("\nALPHA_ROMEO\tFERRARI\tAUDIO\tOTROS\n");
-    printf("%d\t%d\t%d\t%d\n\n", acum1, acum2, acum3, acum4);
+    printf("\nALPHA ROMEO: %d\nFERRARI: %d\nAUDI: %d\nOTROS: %d\n\n", acum1, acum2, acum3, acum4);
 }
 
 
