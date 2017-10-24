@@ -25,12 +25,12 @@ int main()
         clientes[i].estado = 0;
         clientes[i].idDuenio = 0;
 
-    }*/
+    }
     for (int i = 0; i < TAM_AUTOS; i++)
     {
         //autos[i].estado = 0;
         //autos[i].horarioSalida = 0;
-    }
+    }*/
 
 
     while (res == 's')
