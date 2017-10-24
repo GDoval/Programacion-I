@@ -49,7 +49,7 @@ void ingresoDuenio (eDuenio lista[], int tam)
 
     }else
     {
-        printf("\nNo hay lugar en el sistema.\n");
+        printf("\nNo hay lugar en el sistema.\n\n");
     }
 }
 
@@ -101,7 +101,7 @@ void ingresoAuto (eAlquiler autos[], eDuenio lista[], int tam, int tamDuenios)
         autos[indice].estado = 1;
     }else
     {
-        printf("\nCochera llena.\n");
+        printf("\nCochera llena.\n\n");
     }
 }
 
