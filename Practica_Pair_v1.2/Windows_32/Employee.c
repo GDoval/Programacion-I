@@ -11,7 +11,7 @@ int employee_compare(void* pEmployeeA,void* pEmployeeB)
 }
 
 
-void employee_print(Employee* this)
+void employee_print(Employee* this)  //Esto lo que hace es imprimir la estructura que se le pasa como parametro.
 {
     if(this !=NULL)
     {

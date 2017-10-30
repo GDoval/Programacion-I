@@ -17,8 +17,10 @@
 int main()
 {
     Employee* uno;
+    int* p;
     uno = employee_new();
     employee_print(uno);
+
 
     return 0;
 }

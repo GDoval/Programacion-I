@@ -69,7 +69,7 @@
 	"Employee.h"
 	<string.h>
 
-1509369765 source:c:\users\alumno\desktop\clase_18_prog\practica_pair_v1.2\windows_32\main.c
+1509372021 source:c:\users\alumno\desktop\clase_18_prog\practica_pair_v1.2\windows_32\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayList.h"
@@ -84,4 +84,11 @@
 	<stdlib.h>
 	"ArrayList.h"
 	"Employee.h"
+
+1509371903 source:c:\users\alumno\desktop\clase_18_prog\practica_pair_v1.2\windows_32\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+	<string.h>
 
