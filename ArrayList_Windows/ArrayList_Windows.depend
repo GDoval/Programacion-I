@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1510142763 source:c:\users\alumno\desktop\clase_19_lab\arraylist_windows\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1510142763 c:\users\alumno\desktop\clase_19_lab\arraylist_windows\arraylist.h
+	<stdio.h>
+	<stdlib.h>
+
+1510142763 source:c:\users\alumno\desktop\clase_19_lab\arraylist_windows\estructuras.c
+	"estructuras.h"
+	"ArrayList.h"
+
+1510142763 c:\users\alumno\desktop\clase_19_lab\arraylist_windows\estructuras.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1510142796 source:c:\users\alumno\desktop\clase_19_lab\arraylist_windows\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"estructuras.h"
+
