@@ -17,9 +17,9 @@ ePersona* persona_constructor()
 }
 
 
-int compararMails (ePersona* mailUno, ePersona* mailDos)
+int compararMails (void* mailUno, void* mailDos)
 {
-    if (strcmp(mailUno->mail, mailDos->mail) == 0)
+    if (strcmp(((ePersona*)mailUno)->mail, ((ePersona*)mailDos)->mail) == 0)
         return 1;
 }
 
@@ -63,22 +63,14 @@ ArrayList* nuevaLista (ArrayList* lista, ArrayList* listaNegra)
 {
     if (lista == NULL || listaNegra == NULL)
         return NULL;
-    int tam;
     int resp;
     ePersona* aux;
     ePersona* aux2;
-    if (lista->size > listaNegra->size)
+    for (int i = 0; i < lista->size; i++) // indice de la lista
     {
-        tam = lista->size;
-    }else
-    {
-        tam = listaNegra->size;
-    }
-    for (int i = 0; i < tam; i++) // indice de la lista
-    {
-        for (int j = i+1; j < tam; j++) // indice de la black_list
+        aux = lista->get(lista, i);
+        for (int j = i+1; j < lista->size; j++) // indice de la black_list
         {
-            aux = lista->get(lista, i);
             aux2 = listaNegra->get(listaNegra, j);
             resp = compararMails(aux->mail, aux2->mail);
             if (resp)
