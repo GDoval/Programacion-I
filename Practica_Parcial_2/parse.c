@@ -66,19 +66,17 @@ ArrayList* nuevaLista (ArrayList* lista, ArrayList* listaNegra)
     int resp;
     ePersona* aux;
     ePersona* aux2;
-    for (int i = 0; i < lista->size; i++) // indice de la lista
+    for (int i = 0; i < lista->size; i++)
     {
         aux = lista->get(lista, i);
-        for (int j = i+1; j < lista->size; j++) // indice de la black_list
-        {
-            aux2 = listaNegra->get(listaNegra, j);
-            resp = compararMails(aux->mail, aux2->mail);
+        aux2 = listaNegra->get(listaNegra, i+1);
+        resp = compararMails(aux->mail, aux2->mail);
             if (resp)
             {
                 lista->remove(lista, i);
                 break;
             }
         }
-    }
+
     return lista;
 }

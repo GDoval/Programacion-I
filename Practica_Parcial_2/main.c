@@ -37,10 +37,10 @@ int main()
             break;
         case 3:
             definitiva = lista->clone(lista);
-            definitiva = nuevaLista(definitiva, listaNegra);
+            lista = nuevaLista(lista, listaNegra);
             break;
         case 4:
-            imprimir(definitiva);
+            imprimir(lista);
             system("pause");
             break;
         case 5:
