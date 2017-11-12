@@ -27,3 +27,32 @@
 	"ArrayList.h"
 	"parse.h"
 
+1510345365 source:/home/charly/CosasGit/Programacion-I/Practica_Parcial_2/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1510160633 /home/charly/CosasGit/Programacion-I/Practica_Parcial_2/ArrayList.h
+	<stdio.h>
+	<stdlib.h>
+
+1510514016 source:/home/charly/CosasGit/Programacion-I/Practica_Parcial_2/parse.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"parse.h"
+
+1510161065 /home/charly/CosasGit/Programacion-I/Practica_Parcial_2/parse.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1510513961 source:/home/charly/CosasGit/Programacion-I/Practica_Parcial_2/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"parse.h"
+

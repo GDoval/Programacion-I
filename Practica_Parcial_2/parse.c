@@ -20,7 +20,7 @@ ePersona* persona_constructor()
 int compararMails (void* mailUno, void* mailDos)
 {
     if (strcmp(((ePersona*)mailUno)->mail, ((ePersona*)mailDos)->mail) == 0)
-        return 1;
+        return 0;
 }
 
 
@@ -59,24 +59,32 @@ void imprimir(ArrayList* lista)
 }
 
 
-ArrayList* nuevaLista (ArrayList* lista, ArrayList* listaNegra)
+void nuevaLista (ArrayList* lista, ArrayList* listaNegra, ArrayList* definitiva)
 {
     if (lista == NULL || listaNegra == NULL)
-        return NULL;
-    int resp;
+        return -1;
     ePersona* aux;
     ePersona* aux2;
+    int flag = 1;
+    int r;
     for (int i = 0; i < lista->size; i++)
     {
         aux = lista->get(lista, i);
-        aux2 = listaNegra->get(listaNegra, i+1);
-        resp = compararMails(aux->mail, aux2->mail);
-            if (resp)
+        for (int j = 0; j < listaNegra->len(listaNegra); j++)
+        {
+            aux2 = listaNegra->get(listaNegra, j);
+            r = compararMails(aux, aux2);
+            flag = 1;
+            if (r == 0)
             {
-                lista->remove(lista, i);
+                flag = 0;
                 break;
             }
         }
+        if (flag == 1)
+        {
+            definitiva->add(definitiva, aux);
+        }
+    }
 
-    return lista;
 }

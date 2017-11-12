@@ -13,6 +13,6 @@ typedef struct
 
 int parseLista (FILE*, ArrayList* );
 
-ArrayList* nuevaLista (ArrayList*, ArrayList*);
+void nuevaLista (ArrayList*, ArrayList*, ArrayList*);
 
 void imprimir(ArrayList*);

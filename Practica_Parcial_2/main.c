@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ArrayList.h"
 #include "parse.h"
 int main()
@@ -8,13 +9,11 @@ int main()
     FILE* pListaNegra;
     ArrayList* lista = al_newArrayList();
     ArrayList* listaNegra = al_newArrayList();
-    ArrayList* definitiva;
-    definitiva = lista->clone(lista);
-    int opcion;
+    ArrayList* definitiva = al_newArrayList();
+    int opcion = 0;
     char resp = 's';
     while (resp == 's')
     {
-        system("cls");
         printf("1) Parsear lista\n");
         printf("2) Parsear blackList\n");
         printf("3) Depurar\n");
@@ -27,21 +26,23 @@ int main()
             pLista = fopen("destinatarios.csv", "r");
             parseLista(pLista, lista);
             printf("\nListo\n\n");
-            system("pause");
+            //system("pause");
             break;
         case 2:
+            system("clear");
             pListaNegra = fopen("black_list.csv", "r");
             parseLista(pListaNegra, listaNegra);
             printf("\nListo\n\n");
-            system("pause");
+            //system("pause");
             break;
         case 3:
-            definitiva = lista->clone(lista);
-            lista = nuevaLista(lista, listaNegra);
+            system("clear");
+            nuevaLista(lista, listaNegra, definitiva);
             break;
         case 4:
-            imprimir(lista);
-            system("pause");
+            system("clear");
+            imprimir(definitiva);
+            //system("pause");
             break;
         case 5:
             resp = 'n';

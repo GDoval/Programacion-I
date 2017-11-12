@@ -325,7 +325,7 @@ int contract(ArrayList* pList,int index)
         {
             for (int i = 0; i < pList->size; i++)
             {
-                if ( i != index)
+                if ( i != index-1)
                 {
                     auxArray[f] = pList->pElements[i];
                     f++;
