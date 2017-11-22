@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1511351412 source:d:\parcial_ii_gaston_doval_1a\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1511351412 d:\parcial_ii_gaston_doval_1a\arraylist.h
+	<stdio.h>
+	<stdlib.h>
+
+1511353611 source:d:\parcial_ii_gaston_doval_1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"parse.h"
+
+1511353770 d:\parcial_ii_gaston_doval_1a\parse.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1511353557 source:d:\parcial_ii_gaston_doval_1a\parse.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"parse.h"
+
