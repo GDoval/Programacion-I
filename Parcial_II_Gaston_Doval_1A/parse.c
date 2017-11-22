@@ -38,15 +38,54 @@ int parseLista (FILE* lista, ArrayList* arrayLista)
         nuevaPersona = persona_constructor();
         if (nuevaPersona != NULL)
         {
-            strcpy(nuevaPersona->nombre, auxNom);
-            strcpy(nuevaPersona->mail, auxMail);
+            person_SetMail(nuevaPersona, auxMail);
+            person_SetName(nuevaPersona, auxNom);
         }
         arrayLista->add(arrayLista, nuevaPersona);
     }
     return 0;
 }
 
-
+int parseNegra (FILE* lista, ArrayList* origen, ArrayList* listaNegra)
+{
+    if (origen == NULL || listaNegra == NULL)
+        return -1;
+    char auxNom[100];
+    char auxMail[150];
+    ePersona* aux;
+    ePersona* aux2;
+    ePersona* nuevaPersona;
+    int r, f = 0, t;
+    int flag;
+    while (!feof(lista))
+    {
+        flag = 1;
+        fscanf(lista, "%[^,],%s \n", auxNom, auxMail);
+        nuevaPersona = persona_constructor();
+        if (nuevaPersona != NULL)
+        {
+            person_SetMail(nuevaPersona, auxMail);
+            person_SetName(nuevaPersona, auxNom);
+        }
+        for (int i = 0; i < origen->len(origen); i++)
+        {
+            aux = origen->get(origen, i);
+            r = compararMails(nuevaPersona, aux);
+            if (r == 0)
+            {
+                listaNegra->add(listaNegra, aux);
+                break;
+            }else
+            {
+                flag = 0;
+            }
+        }
+        if (flag == 0)
+        {
+            listaNegra->add(listaNegra, nuevaPersona);
+        }
+    }
+}
 
 void imprimir(ArrayList* lista)
 {
@@ -70,11 +109,11 @@ int nuevaLista (ArrayList* lista, ArrayList* listaNegra, ArrayList* definitiva)
     int r;
     for (int i = 0; i < lista->len(lista); i++)
     {
-        aux = lista->get(lista, i);
+        aux = (ePersona*)lista->get(lista, i);
         flag = 1;
         for (int j = 0; j < listaNegra->len(listaNegra); j++)
         {
-            aux2 = listaNegra->get(listaNegra, j);
+            aux2 = (ePersona*)listaNegra->get(listaNegra, j);
             r = compararMails(aux, aux2);
             if (r == 0)
             {
@@ -85,6 +124,21 @@ int nuevaLista (ArrayList* lista, ArrayList* listaNegra, ArrayList* definitiva)
         if (flag == 1)
         {
             definitiva->add(definitiva, aux);
+        }
+    }
+    for (int i = 0; i < definitiva->len(definitiva); i++)
+    {
+        aux = (ePersona*)definitiva->get(definitiva, i);
+        flag = 1;
+        for (int j = i+1; j < definitiva->len(definitiva); j++)
+        {
+            aux2 = (ePersona*)definitiva->get(definitiva, j);
+            r = compararMails(aux, aux2);
+            if (r == 0)
+            {
+                definitiva->remove(definitiva, j);
+                break;
+            }
         }
     }
     return 0;
@@ -100,5 +154,12 @@ void sacarEnter(char vec[]) // borra el enter que queda en la ultima posicion de
 }
 
 
+void person_SetName(ePersona* persona, char* nombre)
+{
+    strcpy(persona->nombre, nombre);
+}
 
-
+void person_SetMail(ePersona* persona, char* mail)
+{
+    strcpy(persona->mail, mail);
+}

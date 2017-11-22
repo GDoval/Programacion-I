@@ -54,7 +54,7 @@ int main()
             sacarEnter(negra);
             strcat(negra, ".csv");
             pListaNegra = fopen(negra, "r");
-            r = parseLista(pListaNegra, listaNegra);
+            r = parseNegra(pListaNegra, lista, listaNegra);
             if (r == -1)
             {
                 printf("\nNo se pudo parsear el archivo\n\n");
