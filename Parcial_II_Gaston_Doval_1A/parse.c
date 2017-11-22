@@ -128,11 +128,11 @@ int nuevaLista (ArrayList* lista, ArrayList* listaNegra, ArrayList* definitiva)
     }
     for (int i = 0; i < definitiva->len(definitiva); i++)
     {
-        aux = (ePersona*)definitiva->get(definitiva, i);
+        aux = definitiva->get(definitiva, i);
         flag = 1;
-        for (int j = i+1; j < definitiva->len(definitiva); j++)
+        for (int j = 0; j < definitiva->len(definitiva); j++)
         {
-            aux2 = (ePersona*)definitiva->get(definitiva, j);
+            aux2 = definitiva->get(definitiva, j);
             r = compararMails(aux, aux2);
             if (r == 0)
             {
