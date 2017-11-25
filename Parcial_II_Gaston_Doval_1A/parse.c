@@ -105,23 +105,13 @@ int nuevaLista (ArrayList* lista, ArrayList* listaNegra, ArrayList* definitiva)
         return -1;
     ePersona* aux;
     ePersona* aux2;
-    int flag = 1;
+    int flag;
     int r;
     for (int i = 0; i < lista->len(lista); i++)
     {
         aux = (ePersona*)lista->get(lista, i);
-        flag = 1;
-        for (int j = 0; j < listaNegra->len(listaNegra); j++)
-        {
-            aux2 = (ePersona*)listaNegra->get(listaNegra, j);
-            r = compararMails(aux, aux2);
-            if (r == 0)
-            {
-                flag = 0;
-                break;
-            }
-        }
-        if (flag == 1)
+        flag = listaNegra->contains(listaNegra, aux);
+        if (flag == 0)
         {
             definitiva->add(definitiva, aux);
         }

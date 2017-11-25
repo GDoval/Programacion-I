@@ -28,3 +28,32 @@
 	"ArrayList.h"
 	"parse.h"
 
+1511624421 source:/home/charly/CosasGit/Programacion-I/Parcial_II_Gaston_Doval_1A/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1511624421 /home/charly/CosasGit/Programacion-I/Parcial_II_Gaston_Doval_1A/ArrayList.h
+	<stdio.h>
+	<stdlib.h>
+
+1511624480 source:/home/charly/CosasGit/Programacion-I/Parcial_II_Gaston_Doval_1A/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"parse.h"
+
+1511624421 /home/charly/CosasGit/Programacion-I/Parcial_II_Gaston_Doval_1A/parse.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1511625485 source:/home/charly/CosasGit/Programacion-I/Parcial_II_Gaston_Doval_1A/parse.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"parse.h"
+
