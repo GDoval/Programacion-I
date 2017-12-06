@@ -15,7 +15,8 @@ int parse_Log(ArrayList* lista)
     archivo = fopen("log.txt", "r");// falta validar que no sea NULL
     S_LogEntry* nuevoLog;
     while(!feof(archivo))
-    {   //Funciona bien, la ultima mascara lee todo hasta el salto de pagina
+    {
+        //Funciona bien, la ultima mascara lee todo hasta el salto de pagina
         fscanf(archivo, "%[^;];%[^;];%[^;];%[^;];%[^\n]\n", auxDate, auxTime, AuxServiceId, AuxGravedad, AuxMsg);
         nuevoLog = log_constructor();
         if (nuevoLog != NULL) //faltaria usar los setters
@@ -131,20 +132,29 @@ int generar_reporte(ArrayList* logs, ArrayList* servicios)
 {
     FILE* warnings;
     FILE* errors;
-    int i;
+    int i, j;
     S_LogEntry* auxLog;
     S_Service* auxService;
+    if ((warnings = fopen("warnings.txt", "r+")) == NULL)
+        if((warnings = fopen("warnings.txt", "w+")) == NULL)
+        {
+            printf("\nNo se pudo abrir el archivo\n");
+            return -1;
+        }
     for (i = 0; i < logs->len(logs); i++)
     {
         auxLog = logs->get(logs, i);
-        if (auxLog->gravedad == 3)
+        if (auxLog->gravedad == 3 && auxLog->serviceId != 44)
         {
-            if ((warnings = fopen("warnings.txt", "r+")) == NULL)
-                if((warnings = fopen("warnings.txt", "w+")) == NULL)
+            for (j = 0; j < servicios->len(servicios); j++)
+            {
+                auxService = servicios->get(servicios, j);
+                if (auxLog->serviceId == auxService->id)
                 {
-                printf("\nNo se pudo abrir el archivo\n");
-                return -1;
+                    fprintf(warnings, "%s ;%s ;%s ;%s ; %d\n", auxLog->date, auxLog->time, auxService->name, auxLog->msg, auxLog->gravedad);
+                    break;
                 }
+            }
         }
     }
 }

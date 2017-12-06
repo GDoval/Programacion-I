@@ -46,9 +46,7 @@ int main()
             }
             break;
         case 3:
-            imprimir(logs);
-            printf("\n\n");
-            imprimir_service(servicios);
+            generar_reporte(logs, servicios);
             system("pause");
             break;
         case 4:

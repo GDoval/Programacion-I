@@ -1,0 +1,9 @@
+09/07/2017 ;09:39 ;hugo@soporte.com.ar ;Error4 ; 3
+09/07/2017 ;10:01 ;marcos@soporte.com.ar ;Error26 ; 3
+09/07/2017 ;10:06 ;nestor@soporte.com.ar ;Error31 ; 3
+09/07/2017 ;10:21 ;zoe@soporte.com.ar ;Error46 ; 3
+09/07/2017 ;10:30 ;pedro@soporte.com.ar ;Error55 ; 3
+09/07/2017 ;10:43 ;diego@soporte.com.ar ;Error68 ; 3
+09/07/2017 ;10:44 ;omar@soporte.com.ar ;Error69 ; 3
+09/07/2017 ;10:57 ;zoe@soporte.com.ar ;Error82 ; 3
+09/07/2017 ;11:08 ;danilo@soporte.com.ar ;Error93 ; 3
