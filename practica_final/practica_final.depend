@@ -34,14 +34,14 @@
 	<stdio.h>
 	<stdlib.h>
 
-1512587702 source:c:\users\soporte\desktop\programacion-i\practica_final\main.c
+1512588658 source:c:\users\soporte\desktop\programacion-i\practica_final\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"ArrayList.h"
 	"parse.h"
 
-1512587800 source:c:\users\soporte\desktop\programacion-i\practica_final\parse.c
+1512588658 source:c:\users\soporte\desktop\programacion-i\practica_final\parse.c
 	"parse.h"
 	"ArrayList.h"
 

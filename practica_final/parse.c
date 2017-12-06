@@ -4,6 +4,8 @@
 
 int parse_Log(ArrayList* lista)
 {
+    if (lista == NULL)
+        return 1;
     FILE* archivo;
     char auxDate[110];
     char auxTime[60];
@@ -27,6 +29,7 @@ int parse_Log(ArrayList* lista)
         lista->add(lista, nuevoLog);
     }
     fclose(archivo);
+    return 0;
 }
 
 
@@ -62,6 +65,8 @@ S_Service* constructor_service()
 
 int parse_sistema(ArrayList* lista)
 {
+    if (lista == NULL)
+        return 1;
     FILE* archivo;
     char auxId[100];
     char auxEmail[100];
@@ -81,6 +86,7 @@ int parse_sistema(ArrayList* lista)
         lista->add(lista, auxiliar);
     }
     fclose(archivo);
+    return 0;
 }
 
 
@@ -117,3 +123,30 @@ void set_Mail(S_Service* persona, char* mail)
 {
     strcpy(persona->email, mail);
 }
+
+
+
+
+int generar_reporte(ArrayList* logs, ArrayList* servicios)
+{
+    FILE* warnings;
+    FILE* errors;
+    int i;
+    S_LogEntry* auxLog;
+    S_Service* auxService;
+    for (i = 0; i < logs->len(logs); i++)
+    {
+        auxLog = logs->get(logs, i);
+        if (auxLog->gravedad == 3)
+        {
+            if ((warnings = fopen("warnings.txt", "r+")) == NULL)
+                if((warnings = fopen("warnings.txt", "w+")) == NULL)
+                {
+                printf("\nNo se pudo abrir el archivo\n");
+                return -1;
+                }
+        }
+    }
+}
+
+
