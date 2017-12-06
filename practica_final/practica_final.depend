@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1512563411 source:c:\users\soporte\desktop\codeblocks\practica_final\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1512563411 c:\users\soporte\desktop\codeblocks\practica_final\arraylist.h
+	<stdio.h>
+	<stdlib.h>
+
+1512576237 source:c:\users\soporte\desktop\codeblocks\practica_final\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1512582227 source:c:\users\soporte\desktop\codeblocks\practica_final\parse.c
+	"parse.h"
+	"ArrayList.h"
+
+1512571988 c:\users\soporte\desktop\codeblocks\practica_final\parse.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
