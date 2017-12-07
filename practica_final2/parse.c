@@ -71,7 +71,31 @@ void parse_artista(ArrayList* lista)
 }
 
 
+void parse_canciones(ArrayList* lista)
+{
+    FILE* archivo;
+    archivo = abrir_archivo("temas.dat");
+    eCanciones* aux;
+    char auxArtista[1000];
+    char auxId[1000];
+    char auxTema[1000];
+    int validar;
+    fscanf(archivo, "%[^,],%[^,],%[^\n];", auxId, auxTema, auxArtista);
+    while(!feof(archivo))
+    {
+        validar = fscanf(archivo, "%[^,],%[^,],%[^\n];", auxId, auxTema, auxArtista);
+        if (validar == 3)
+        {
+            aux = constructor_canciones();
+            if (aux != NULL)
+            {
+                strcpy(aux->artista, auxArtista);
 
+            }
+
+        }
+    }
+}
 
 
 FILE* abrir_archivo(char* path)
