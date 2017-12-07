@@ -128,19 +128,15 @@ void set_Mail(S_Service* persona, char* mail)
 
 
 
-int generar_reporte(ArrayList* logs, ArrayList* servicios)
+void generar_reporte(ArrayList* logs, ArrayList* servicios)
 {
     FILE* warnings;
     FILE* errors;
-    int i, j;
+    int i, j, t;
     S_LogEntry* auxLog;
     S_Service* auxService;
-    if ((warnings = fopen("warnings.txt", "r+")) == NULL)
-        if((warnings = fopen("warnings.txt", "w+")) == NULL)
-        {
-            printf("\nNo se pudo abrir el archivo\n");
-            return -1;
-        }
+    warnings = abrir_archivo("warnings.txt");
+    errors = abrir_archivo("errors.txt");
     for (i = 0; i < logs->len(logs); i++)
     {
         auxLog = logs->get(logs, i);
@@ -151,12 +147,51 @@ int generar_reporte(ArrayList* logs, ArrayList* servicios)
                 auxService = servicios->get(servicios, j);
                 if (auxLog->serviceId == auxService->id)
                 {
-                    fprintf(warnings, "%s ;%s ;%s ;%s ; %d\n", auxLog->date, auxLog->time, auxService->name, auxLog->msg, auxLog->gravedad);
+                    fprintf(warnings, "%s ;%s ;%s ;%s ;  %s\n", auxLog->date, auxLog->time, auxService->name, auxLog->msg, auxService->email);
                     break;
+                }
+            }
+        }
+        else
+        {
+            if (auxLog->gravedad > 3 && auxLog->gravedad <= 7)
+            {
+                for (t = 0; t < servicios->len(servicios); t++)
+                {
+                    auxService = servicios->get(servicios, t);
+                    if (auxLog->serviceId == auxService->id)
+                    {
+                        printf("%s     %s           %s         %s         %d\n", auxLog->date, auxLog->time, auxService->name, auxLog->msg, auxLog->gravedad);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                if(auxLog->gravedad > 7)
+                {
+                    for (j = 0; j < servicios->len(servicios); j++)
+                    {
+                        auxService = servicios->get(servicios, j);
+                        if (auxLog->serviceId == auxService->id)
+                        {
+                            fprintf(errors, "%s ;%s ;%s ;%s ;  %s\n", auxLog->date, auxLog->time, auxService->name, auxLog->msg, auxService->email);
+                            break;
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-
+FILE* abrir_archivo(char* path)
+{
+    FILE* archivo;
+    if ((archivo = fopen(path, "r+")) == NULL)
+        if((archivo = fopen(path, "w+")) == NULL)
+        {
+            printf("\nNo se pudo abrir el archivo\n");
+        }
+    return archivo;
+}

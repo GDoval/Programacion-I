@@ -41,12 +41,13 @@
 	"ArrayList.h"
 	"parse.h"
 
-1512593707 source:c:\users\soporte\desktop\programacion-i\practica_final\parse.c
+1512649089 source:c:\users\soporte\desktop\programacion-i\practica_final\parse.c
 	"parse.h"
 	"ArrayList.h"
 
-1512571988 c:\users\soporte\desktop\programacion-i\practica_final\parse.h
+1512649256 c:\users\soporte\desktop\programacion-i\practica_final\parse.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	"ArrayList.h"
 
