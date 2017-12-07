@@ -19,7 +19,7 @@ int parse_Log(ArrayList* lista)
         //Funciona bien, la ultima mascara lee todo hasta el salto de pagina
         fscanf(archivo, "%[^;];%[^;];%[^;];%[^;];%[^\n]\n", auxDate, auxTime, AuxServiceId, AuxGravedad, AuxMsg);
         nuevoLog = log_constructor();
-        if (nuevoLog != NULL) //faltaria usar los setters
+        if (nuevoLog != NULL)
         {
             strcpy(nuevoLog->date, auxDate);
             strcpy(nuevoLog->time, auxTime);
@@ -194,4 +194,82 @@ FILE* abrir_archivo(char* path)
             printf("\nNo se pudo abrir el archivo\n");
         }
     return archivo;
+}
+
+
+
+void mostrar_estadistica(ArrayList* logs, ArrayList* servicios)
+{
+    int i;
+    int cont[] = {0,0,0,0,0,0,0,0,0,0};
+    S_LogEntry* aux;
+    for (i = 0; i < logs->len(logs); i++)
+    {
+        aux = logs->get(logs, i);
+        switch (aux->gravedad)
+        {
+        case 0:
+            cont[0]++;
+            break;
+        case 1:
+            cont[1]++;
+            break;
+        case 2:
+            cont[2]++;
+            break;
+        case 3:
+            cont[3]++;
+            break;
+        case 4:
+            cont[4]++;
+            break;
+        case 5:
+            cont[5]++;
+            break;
+        case 6:
+            cont[6]++;
+            break;
+        case 7:
+            cont[7]++;
+            break;
+        case 8:
+            cont[8]++;
+            break;
+        case 9:
+            cont[9]++;
+            break;
+        }
+    }
+    printf("\nCantidad de errores de gravedad menor a 3: %d", cont[0]+cont[1]+cont[2]);
+    printf("\nCantidad de errores de gravedad 3: %d", cont[3]);
+    printf("\nCantidad de errores de gravedad entre 4 y 7: %d", cont[4]+cont[5]+cont[6]+cont[7]);
+    printf("\nCantidad de errores de gravedad mayor a 7: %d", cont[8]+cont[9]);
+}
+
+int mayorError(ArrayList* logs)
+{
+    int mayor = 0, cont;
+    int idFinal;
+    S_LogEntry* aux;
+    S_LogEntry* aux2;
+    int i,j;
+    for (i = 0; i < logs->len(logs);i++)
+    {
+        aux = logs->get(logs, i);
+        cont = 0;
+        for (j = 0; j < logs->len(logs);j++)
+        {
+            aux2 = logs->get(logs,j);
+            if (aux->serviceId == aux2->serviceId)
+            {
+                cont++;
+            }
+        }
+        if (cont > mayor)
+        {
+            mayor = cont;
+            idFinal = aux->serviceId;
+        }
+    }
+    return idFinal;
 }

@@ -50,6 +50,10 @@ int main()
             system("pause");
             break;
         case 4:
+            mostrar_estadistica(logs, servicios);
+            validar = mayorError(logs);
+            printf("\nEl servicio que mas errores tuvo fue el: %d\n", validar);
+            system("pause");
             break;
         case 5:
             resp = 'n';
