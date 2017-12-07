@@ -36,8 +36,9 @@ eCanciones* constructor_canciones()
 void parse_artista(ArrayList* lista)
 {
     FILE* archivo;
+    int validar;
     archivo = abrir_archivo("usuarios.dat");
-    char auxId[100];
+    char auxId[1000];
     char auxNombre[100];
     char auxEmail[100];
     char auxSexo[100];
@@ -48,19 +49,23 @@ void parse_artista(ArrayList* lista)
     fscanf(archivo, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n];", auxId, auxNombre, auxEmail, auxSexo, auxPais, auxPassword, auxIp_adress);
     while(!feof(archivo))
     {
-        fscanf(archivo, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n];", auxId, auxNombre, auxEmail, auxSexo, auxPais, auxPassword, auxIp_adress);
-        aux = constructor_artista();
-        if (aux != NULL)
+        validar = fscanf(archivo, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n];", auxId, auxNombre, auxEmail, auxSexo, auxPais, auxPassword, auxIp_adress);
+        if (validar == 7)
         {
-            strcpy(aux->email, auxEmail);
-            strcpy(aux->ip_adress, auxIp_adress);
-            strcpy(aux->nombre, auxNombre);
-            strcpy(aux->password, auxPassword);
-            strcpy(aux->pais, auxPais);
-            strcpy(aux->sexo, auxSexo);
-            aux->id = atoi(auxId);
+            aux = constructor_artista();
+            if (aux != NULL)
+            {
+                strcpy(aux->email, auxEmail);
+                strcpy(aux->ip_adress, auxIp_adress);
+                strcpy(aux->nombre, auxNombre);
+                strcpy(aux->password, auxPassword);
+                strcpy(aux->pais, auxPais);
+                strcpy(aux->sexo, auxSexo);
+                aux->id = atoi(auxId);
+            }
+            lista->add(lista, aux);
         }
-        lista->add(lista, aux);
+
     }
     fclose(archivo);
 }
