@@ -1,0 +1,6 @@
+1,Juan,Perez,33114455
+2,Maria,Antonieta,44556677
+3,Robledo,Pedrazo,12345677
+4,Juana,Fuana,9782346
+5,Estele,Ponchele,98734421
+6,Esteban,Quito,9842342

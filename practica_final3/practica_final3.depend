@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1512995931 source:c:\users\soporte\desktop\programacion-i\practica_final3\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1512995931 c:\users\soporte\desktop\programacion-i\practica_final3\arraylist.h
+	<stdio.h>
+	<stdlib.h>
+
+1513000553 source:c:\users\soporte\desktop\programacion-i\practica_final3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"parse.h"
+
+1513003773 c:\users\soporte\desktop\programacion-i\practica_final3\parse.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1513003882 source:c:\users\soporte\desktop\programacion-i\practica_final3\parse.c
+	"ArrayList.h"
+	"parse.h"
+
