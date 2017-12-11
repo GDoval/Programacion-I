@@ -27,3 +27,4 @@ eVentas* constructor_ventas();
 void imprimir_clientes(ArrayList*);
 void parse_clientes(ArrayList*);
 void parsear_ventas(ArrayList*);
+void sacarEnter(char[]);

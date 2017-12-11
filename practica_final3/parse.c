@@ -120,3 +120,33 @@ void imprimir_ventas(ArrayList* lista)
         printf("%d    %d    %d     %d     %d\n", aux->id_venta, aux->id_cliente, aux->codProducto,aux->cantidad, aux->precioUnitario);
     }
 }
+
+
+
+void sacarEnter(char vec[]) // borra el enter que queda en la ultima posicion del string cuando se usa fgets().
+{
+    int cant;
+    cant = strlen(vec);
+    vec[cant-1] = '\0';
+}
+
+void devuelve_nombre(char nom[])
+{
+    printf("Ingrese el nombre del cliente: ");
+    setbuf(stdin, NULL);
+    fgets(nom, 101, stdin);
+    sacarEnter(nom);
+}
+
+void devuelve_apellido(char ape[])
+{
+    printf("\nIngrese apellido del cliente: ");
+    setbuf(stdin, NULL);
+    fgets(ape, 101, stdin);
+    sacarEnter(ape);
+}
+
+void crea_txt(ArrayList* lista, FILE* archivo)
+{
+
+}
