@@ -90,11 +90,14 @@ void parse_canciones(ArrayList* lista)
             if (aux != NULL)
             {
                 strcpy(aux->artista, auxArtista);
-
+                strcpy(aux->nombre_tema, auxTema);
+                aux->id = atoi(auxId);
             }
+            lista->add(lista, aux);
 
         }
     }
+    fclose(archivo);
 }
 
 
@@ -118,5 +121,18 @@ void imprimir_artistas(ArrayList* lista)
     {
         aux = lista->get(lista, i);
         printf("%d    %s     %s     %s     %s      %s\n", aux->id, aux->nombre, aux->pais, aux->sexo, aux->ip_adress, aux->password);
+    }
+}
+
+
+
+void imprimir_canciones(ArrayList* lista)
+{
+    eCanciones* aux;
+    int i;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = lista->get(lista, i);
+        printf("%d       %s          %s\n", aux->id, aux->nombre_tema, aux->artista);
     }
 }

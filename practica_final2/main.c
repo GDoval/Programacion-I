@@ -8,7 +8,10 @@
 int main()
 {
     ArrayList* artistas = al_newArrayList();
+    ArrayList* canciones = al_newArrayList();
     parse_artista(artistas);
-    imprimir_artistas(artistas);
+    parse_canciones(canciones);
+    //imprimir_artistas(artistas);
+    imprimir_canciones(canciones);
     return 0;
 }
