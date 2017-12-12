@@ -9,19 +9,19 @@
 	<stdio.h>
 	<stdlib.h>
 
-1513018355 source:c:\users\soporte\desktop\programacion-i\practica_final3\main.c
+1513082880 source:c:\users\soporte\desktop\programacion-i\practica_final3\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayList.h"
 	"parse.h"
 
-1513016602 c:\users\soporte\desktop\programacion-i\practica_final3\parse.h
+1513082908 c:\users\soporte\desktop\programacion-i\practica_final3\parse.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"ArrayList.h"
 
-1513018314 source:c:\users\soporte\desktop\programacion-i\practica_final3\parse.c
+1513082907 source:c:\users\soporte\desktop\programacion-i\practica_final3\parse.c
 	"ArrayList.h"
 	"parse.h"
 

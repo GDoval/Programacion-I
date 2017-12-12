@@ -13,7 +13,8 @@ int main()
     FILE* copia;
     char nombre[100];
     char apellido[100];
-    int id, dni, len;
+    int id, len;
+    long int dni;
     eCliente* aux;
     int opcion;
     char resp = 's';
@@ -40,35 +41,25 @@ int main()
             id = aux->id;
             devuelve_nombre(nombre);
             devuelve_apellido(apellido);
-            printf("\nIngrese DNI del cliente: ");
-            scanf("%d", &dni);
+            dni = devuelve_dni();
             archivo = abrir_archivo("clientes.txt");
             rewind(archivo);
             fseek(archivo, 0L, SEEK_END);
-            fprintf(archivo, "%d,%s,%s,%d\n", id+1, nombre, apellido, dni);
+            fprintf(archivo, "%d,%s,%s,%li\n", id+1, nombre, apellido, dni);
             fclose(archivo);
             break;
         case 2:
             system("cls");
-            printf("Ingrese DNI del cliente: ");
-            scanf("%d", &dni);
-            devuelve_apellido(apellido);
+            printf("Ingrese ID del cliente: ");
+            scanf("%d", &id);
             devuelve_nombre(nombre);
-            abrir_archivo("clientes.txt");
-            int i;
-            for (i = 0; i < clientes->len(clientes); i++)
-            {
-                aux = clientes->get(clientes, i);
-                if (aux->id == id)
-                {
-                    strcpy(aux->apellido, apellido);
-                    strcpy(aux->nombre, nombre);
-                    clientes->set(clientes, i+1, aux);
-                    break;
-                }
-            }
-            abrir_archivo("clientes2.txt");
-
+            devuelve_apellido(apellido);
+            dni = devuelve_dni();
+            modifica_clientes(clientes, id, dni, nombre, apellido);
+            copia = abrir_archivo("clientes2.txt");
+            crea_txt_cliente(clientes, copia);
+            remove("clientes.txt");
+            rename("clientes2.txt", "clientes.txt");
             break;
         case 3:
             break;
@@ -94,5 +85,7 @@ int main()
             break;
         }
     }
+    clientes->deleteArrayList(clientes);
+    ventas->deleteArrayList(ventas);
     return 0;
 }

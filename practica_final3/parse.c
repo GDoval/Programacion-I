@@ -105,7 +105,7 @@ void imprimir_clientes(ArrayList* lista)
     for (i = 0; i < lista->len(lista); i++)
     {
         aux = lista->get(lista, i);
-        printf("%d     %s     %s       %d\n", aux->id, aux->nombre, aux->apellido, aux->dni);
+        printf("%d     %s     %s       %li\n", aux->id, aux->nombre, aux->apellido, aux->dni);
     }
 }
 
@@ -146,7 +146,40 @@ void devuelve_apellido(char ape[])
     sacarEnter(ape);
 }
 
-void crea_txt(ArrayList* lista, FILE* archivo)
+long int devuelve_dni()
 {
+    long int dni;
+    printf("\nIngrese el DNI del cliente: ");
+    scanf("%li", &dni);
+    return dni;
+}
 
+void crea_txt_cliente(ArrayList* lista, FILE* archivo)
+{
+    int i;
+    eCliente* aux;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = lista->get(lista, i);
+        fprintf(archivo, "%d,%s,%s,%li\n", aux->id, aux->nombre, aux->apellido, aux->dni);
+    }
+    fclose(archivo);
+}
+
+void modifica_clientes(ArrayList* lista, int id, long int dni, char nombre[], char apellido[])
+{
+    int i;
+    eCliente* aux;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = lista->get(lista, i);
+        if (aux->id == id)
+        {
+            strcpy(aux->apellido, apellido);
+            strcpy(aux->nombre, nombre);
+            aux->dni = dni;
+            lista->set(lista, i, aux);
+            break;
+        }
+    }
 }
