@@ -16,6 +16,7 @@ int main()
     int id, len;
     long int dni;
     eCliente* aux;
+    eVentas* auxV;
     int opcion;
     char resp = 's';
     while (resp == 's')
@@ -62,6 +63,33 @@ int main()
             rename("clientes2.txt", "clientes.txt");
             break;
         case 3:
+            system("cls");
+            printf("Ingrese ID del cliente a eliminar: ");
+            scanf("%d", &id);
+            int flag, flag2, indice;
+            flag = buscar_id_cliente(clientes, id);
+            if (flag == 1)
+            {
+                flag2 = buscar_id_ventas(ventas, id);
+                indice = buscar_indice_clientes(clientes, id);
+
+            }else
+            {
+                printf("El ID ingresado no se encuentra en la base de datos\n\n");
+            }
+            if (flag2 == 1)
+            {
+
+                clientes->remove(clientes,indice);
+                copia = abrir_archivo("clientes2.txt");
+                crea_txt_cliente(clientes, copia);
+                remove("clientes.txt");
+                rename("clientes2.txt", "clientes.txt");
+            }
+            else
+            {
+                printf("No pueden eliminarse clientes que tengan ventas asociadas.\n");
+            }
             break;
         case 4:
             break;

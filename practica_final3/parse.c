@@ -160,7 +160,7 @@ void crea_txt_cliente(ArrayList* lista, FILE* archivo)
     eCliente* aux;
     for (i = 0; i < lista->len(lista); i++)
     {
-        aux = lista->get(lista, i);
+        aux = (eCliente*)lista->get(lista, i);
         fprintf(archivo, "%d,%s,%s,%li\n", aux->id, aux->nombre, aux->apellido, aux->dni);
     }
     fclose(archivo);
@@ -172,7 +172,7 @@ void modifica_clientes(ArrayList* lista, int id, long int dni, char nombre[], ch
     eCliente* aux;
     for (i = 0; i < lista->len(lista); i++)
     {
-        aux = lista->get(lista, i);
+        aux = (eCliente*) lista->get(lista, i);
         if (aux->id == id)
         {
             strcpy(aux->apellido, apellido);
@@ -181,5 +181,51 @@ void modifica_clientes(ArrayList* lista, int id, long int dni, char nombre[], ch
             lista->set(lista, i, aux);
             break;
         }
+    }
+}
+
+
+int buscar_id_ventas(ArrayList* lista, int id)
+{
+    int i;
+    int flag = 1;
+    eVentas* auxV;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        auxV = (eVentas*)lista->get(lista, i);
+        if (auxV->id_cliente == id)
+        {
+            flag = 0;
+            break;
+        }
+    }
+    return flag;
+}
+
+int buscar_id_cliente(ArrayList* lista, int id)
+{
+    int i, flag = 0;
+    eCliente* aux;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = (eCliente*) lista->get(lista, i);
+        if (aux->id == id)
+        {
+            flag = 1;
+            break;
+        }
+    }
+    return flag;
+}
+
+int buscar_indice_clientes(ArrayList* lista, int id)
+{
+    eCliente* aux;
+    int i;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = lista->get(lista, i);
+        if (aux->id == id)
+            return i;
     }
 }
