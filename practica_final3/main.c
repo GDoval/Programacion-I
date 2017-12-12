@@ -7,6 +7,7 @@ int main()
 {
     ArrayList* clientes = al_newArrayList();
     ArrayList* ventas = al_newArrayList();
+    ArrayList* clonada;
     parse_clientes(clientes);
     parsear_ventas(ventas);
     FILE* archivo;
@@ -16,7 +17,6 @@ int main()
     int id, len;
     long int dni;
     eCliente* aux;
-    eVentas* auxV;
     int opcion;
     char resp = 's';
     while (resp == 's')
@@ -79,7 +79,6 @@ int main()
             }
             if (flag2 == 1)
             {
-
                 clientes->remove(clientes,indice);
                 copia = abrir_archivo("clientes2.txt");
                 crea_txt_cliente(clientes, copia);
@@ -92,6 +91,11 @@ int main()
             }
             break;
         case 4:
+            system("cls");
+            clonada = clientes->clone(clientes);
+            clonada->sort(clonada, ordenar_clientes_apellido, 1);
+            imprimir_clientes(clonada);
+            system("pause");
             break;
         case 5:
             break;

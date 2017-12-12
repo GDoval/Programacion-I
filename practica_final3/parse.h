@@ -24,7 +24,7 @@ typedef struct
 eCliente* constructor_clientes();
 FILE* abrir_archivo(char* );
 eVentas* constructor_ventas();
-void imprimir_clientes(ArrayList*);
+void imprimir_clientes_ordenado(ArrayList*);
 void parse_clientes(ArrayList*);
 void parsear_ventas(ArrayList*);
 void sacarEnter(char[]);
@@ -33,3 +33,7 @@ void devuelve_apellido(char[]);
 void devuelve_nombre(char []);
 long int devuelve_dni();
 void modifica_clientes(ArrayList*, int, long int, char[], char[]);
+int buscar_indice_clientes(ArrayList*, int);
+int buscar_id_cliente(ArrayList*, int);
+int buscar_id_ventas(ArrayList*, int);
+int ordenar_clientes_apellido(eCliente*, eCliente*);

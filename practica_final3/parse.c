@@ -105,7 +105,7 @@ void imprimir_clientes(ArrayList* lista)
     for (i = 0; i < lista->len(lista); i++)
     {
         aux = lista->get(lista, i);
-        printf("%d     %s     %s       %li\n", aux->id, aux->nombre, aux->apellido, aux->dni);
+        printf("%d     %s                %s       %li\n", aux->id, aux->nombre, aux->apellido, aux->dni);
     }
 }
 
@@ -228,4 +228,12 @@ int buscar_indice_clientes(ArrayList* lista, int id)
         if (aux->id == id)
             return i;
     }
+    return -1;
+}
+
+int ordenar_clientes_apellido(eCliente* uno, eCliente* dos)
+{
+   if(strcmp(uno->apellido, dos->apellido) >0)
+        return 1;
+    return 0;
 }
