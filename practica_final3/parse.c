@@ -44,7 +44,7 @@ void parsear_ventas(ArrayList* lista)
             aux->id_venta = atoi(auxIdVenta);
             aux->id_cliente = atoi(auxIdCliente);
             aux->cantidad = atoi(auxCantidad);
-            aux->precioUnitario = atoi(auxPrecio);
+            aux->precioUnitario = atof(auxPrecio);
             aux->codProducto = atoi(auxCodProducto);
         }
         lista->add(lista, aux);
@@ -105,7 +105,7 @@ void imprimir_clientes(ArrayList* lista)
     for (i = 0; i < lista->len(lista); i++)
     {
         aux = lista->get(lista, i);
-        printf("%d     %s                %s       %li\n", aux->id, aux->nombre, aux->apellido, aux->dni);
+        printf("%d     %s       %s       %li\n", aux->id, aux->nombre, aux->apellido, aux->dni);
     }
 }
 
@@ -117,7 +117,7 @@ void imprimir_ventas(ArrayList* lista)
     for (i = 0; i < lista->len(lista); i++)
     {
         aux = lista->get(lista, i);
-        printf("%d    %d    %d     %d     %d\n", aux->id_venta, aux->id_cliente, aux->codProducto,aux->cantidad, aux->precioUnitario);
+        printf("%d    %d    %d     %d     %.2f\n", aux->id_venta, aux->id_cliente, aux->codProducto,aux->cantidad, aux->precioUnitario);
     }
 }
 
@@ -162,6 +162,19 @@ void crea_txt_cliente(ArrayList* lista, FILE* archivo)
     {
         aux = (eCliente*)lista->get(lista, i);
         fprintf(archivo, "%d,%s,%s,%li\n", aux->id, aux->nombre, aux->apellido, aux->dni);
+    }
+    fclose(archivo);
+}
+
+
+void crea_txt_ventas(ArrayList* lista, FILE* archivo)
+{
+    int i;
+    eVentas* aux;
+    for(i = 0; i < lista->len(lista); i++)
+    {
+        aux = (eVentas*) lista->get(lista, i);
+        fprintf("%d,%d,%d,%d,%.2f", aux->id_venta, aux->id_cliente, aux->codProducto, aux->cantidad, aux->precioUnitario);
     }
     fclose(archivo);
 }
@@ -224,8 +237,22 @@ int buscar_indice_clientes(ArrayList* lista, int id)
     int i;
     for (i = 0; i < lista->len(lista); i++)
     {
-        aux = lista->get(lista, i);
+        aux = (eCliente*)lista->get(lista, i);
         if (aux->id == id)
+            return i;
+    }
+    return -1;
+}
+
+
+int buscar_indice_ventas(ArrayList* lista, int id)
+{
+    eVentas* aux;
+    int i;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = (eVentas*) lista->get(lista, i);
+        if (aux->id_venta == id)
             return i;
     }
     return -1;
@@ -233,7 +260,36 @@ int buscar_indice_clientes(ArrayList* lista, int id)
 
 int ordenar_clientes_apellido(eCliente* uno, eCliente* dos)
 {
-   if(strcmp(uno->apellido, dos->apellido) >0)
+    if(strcmp(uno->apellido, dos->apellido) >0)
         return 1;
     return 0;
+}
+
+
+int pedir_ID_cliente()
+{
+    int id;
+    printf("Ingrese ID del cliente : ");
+    scanf("%d", &id);
+    if (id > 0)
+        return id;
+    return -1;
+}
+
+int buscar_precio(int producto)
+{
+    int precio;
+    switch (producto)
+    {
+    case 1000:
+        precio = TV_LG_32;
+        break;
+    case 1001:
+        precio = PS4;
+        break;
+    case 1002:
+        precio = IPHONE7;
+        break;
+    }
+    return precio;
 }

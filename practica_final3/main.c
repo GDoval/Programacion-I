@@ -3,6 +3,7 @@
 #include "ArrayList.h"
 #include "parse.h"
 
+
 int main()
 {
     ArrayList* clientes = al_newArrayList();
@@ -14,9 +15,12 @@ int main()
     FILE* copia;
     char nombre[100];
     char apellido[100];
-    int id, len;
+    int id, len, codigo, cantidad, idV;
+    int flag, flag2, indice;
     long int dni;
+    float precio;
     eCliente* aux;
+    eVentas* auxV;
     int opcion;
     char resp = 's';
     while (resp == 's')
@@ -51,8 +55,7 @@ int main()
             break;
         case 2:
             system("cls");
-            printf("Ingrese ID del cliente: ");
-            scanf("%d", &id);
+            id = pedir_ID_cliente();
             devuelve_nombre(nombre);
             devuelve_apellido(apellido);
             dni = devuelve_dni();
@@ -64,16 +67,14 @@ int main()
             break;
         case 3:
             system("cls");
-            printf("Ingrese ID del cliente a eliminar: ");
-            scanf("%d", &id);
-            int flag, flag2, indice;
+            id = pedir_ID_cliente();
             flag = buscar_id_cliente(clientes, id);
             if (flag == 1)
             {
                 flag2 = buscar_id_ventas(ventas, id);
                 indice = buscar_indice_clientes(clientes, id);
-
-            }else
+            }
+            else
             {
                 printf("El ID ingresado no se encuentra en la base de datos\n\n");
             }
@@ -95,11 +96,41 @@ int main()
             clonada = clientes->clone(clientes);
             clonada->sort(clonada, ordenar_clientes_apellido, 1);
             imprimir_clientes(clonada);
+            clonada->deleteArrayList(clonada);
             system("pause");
             break;
         case 5:
+            system("cls");
+            id = pedir_ID_cliente();
+            printf("\nIngrese el codigo del producto: 1000-1001-1002: ");
+            scanf("%d", &codigo);
+            printf("\nIngrese la cantidad a comprar: ");
+            scanf("%d", &cantidad);
+            precio = buscar_precio(codigo);
+            len = ventas->len(ventas);
+            aux = ventas->get(ventas, len-1);
+            idV = aux->id;
+            archivo = abrir_archivo("ventas.txt");
+            rewind(archivo);
+            fseek(archivo, 0L, SEEK_END);
+            fprintf(archivo, "\n%d,%d,%d,%d,%.2f", idV+1,id, codigo, cantidad,precio);
+            fclose(archivo);
             break;
         case 6:
+            system("cls");
+            printf("Ingrese el ID de la venta a dar de baja: ");
+            scanf("%d", &id);
+            flag = buscar_id_ventas(ventas, id);
+            if (!flag)
+            {
+                indice = buscar_indice_ventas(ventas, id);
+                ventas->remove(ventas, indice);
+                copia = abrir_archivo("ventas2.txt");
+
+                remove("ventas.txt");
+                rename("ventas2.txt", "ventas.txt");
+
+            }
             break;
         case 7:
             break;

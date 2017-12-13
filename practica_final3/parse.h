@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "ArrayList.h"
+#define TV_LG_32 8999.99
+#define PS4 12999.99
+#define IPHONE7 19480.99
+
 
 typedef struct
 {
@@ -37,3 +41,4 @@ int buscar_indice_clientes(ArrayList*, int);
 int buscar_id_cliente(ArrayList*, int);
 int buscar_id_ventas(ArrayList*, int);
 int ordenar_clientes_apellido(eCliente*, eCliente*);
+int buscar_precio(int);
