@@ -307,3 +307,38 @@ void imprimir_ventas_producto(ArrayList* lista, int codigo)
         }
     }
 }
+
+
+void generar_reporte_clientes(ArrayList* clientes, ArrayList* ventas)
+{
+    eCliente* auxC;
+    eVentas* auxV;
+    int i,j;
+    float total;
+    char producto[100];
+    for (i = 0; i < clientes->len(clientes);i++)
+    {
+        auxC = (eCliente*) clientes->get(clientes, i);
+        for (j = 0; j < ventas->len(ventas); j++)
+        {
+            auxV = (eVentas*) ventas->get(ventas, j);
+            if (auxC->id == auxV->id_cliente)
+            {
+                total = auxV->precioUnitario * auxV->cantidad;
+                switch(auxV->codProducto)
+                {
+                case 1000:
+                    strcpy(producto, "TV LG 32");
+                    break;
+                case 1001:
+                    strcpy(producto, "PS4");
+                    break;
+                case 1002:
+                    strcpy(producto, "IPHONE7");
+                    break;
+                }
+                printf("%d   %s    %d   %2.f\n", auxC->id,producto, auxV->cantidad, total);
+            }
+        }
+    }
+}

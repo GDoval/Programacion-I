@@ -155,6 +155,9 @@ int main()
         case 9:
             break;
         case 10:
+            system("cls");
+            generar_reporte_clientes(clientes, ventas);
+            system("pause");
             break;
         case 11:
             resp = 'n';
