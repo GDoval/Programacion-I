@@ -116,8 +116,8 @@ void imprimir_ventas(ArrayList* lista)
     int i;
     for (i = 0; i < lista->len(lista); i++)
     {
-        aux = lista->get(lista, i);
-        printf("%d    %d    %d     %d     %.2f\n", aux->id_venta, aux->id_cliente, aux->codProducto,aux->cantidad, aux->precioUnitario);
+        aux = (eVentas*)lista->get(lista, i);
+        printf("%d\t%d\t%d\t%d\t%.2f\n", aux->id_venta, aux->id_cliente, aux->codProducto,aux->cantidad, aux->precioUnitario);
     }
 }
 
@@ -174,7 +174,7 @@ void crea_txt_ventas(ArrayList* lista, FILE* archivo)
     for(i = 0; i < lista->len(lista); i++)
     {
         aux = (eVentas*) lista->get(lista, i);
-        fprintf("%d,%d,%d,%d,%.2f", aux->id_venta, aux->id_cliente, aux->codProducto, aux->cantidad, aux->precioUnitario);
+        fprintf(archivo,"%d,%d,%d,%d,%.2f\n", aux->id_venta, aux->id_cliente, aux->codProducto, aux->cantidad, aux->precioUnitario);
     }
     fclose(archivo);
 }
@@ -292,4 +292,18 @@ int buscar_precio(int producto)
         break;
     }
     return precio;
+}
+
+void imprimir_ventas_producto(ArrayList* lista, int codigo)
+{
+    eVentas* aux;
+    int i;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = (eVentas*) lista->get(lista, i);
+        if (aux->codProducto == codigo)
+        {
+            printf("%d   %d   %d  %d   %.2f \n", aux->id_venta, aux->id_cliente, aux->codProducto, aux->cantidad, aux->precioUnitario);
+        }
+    }
 }

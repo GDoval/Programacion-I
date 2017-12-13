@@ -25,6 +25,7 @@ int main()
     char resp = 's';
     while (resp == 's')
     {
+        system("cls");
         printf("1) Agregar nuevo cliente\n");
         printf("2) Modificar cliente\n");
         printf("3) Baja de cliente\n");
@@ -52,6 +53,7 @@ int main()
             fseek(archivo, 0L, SEEK_END);
             fprintf(archivo, "%d,%s,%s,%li\n", id+1, nombre, apellido, dni);
             fclose(archivo);
+            system("pause");
             break;
         case 2:
             system("cls");
@@ -64,6 +66,7 @@ int main()
             crea_txt_cliente(clientes, copia);
             remove("clientes.txt");
             rename("clientes2.txt", "clientes.txt");
+            system("pause");
             break;
         case 3:
             system("cls");
@@ -115,6 +118,7 @@ int main()
             fseek(archivo, 0L, SEEK_END);
             fprintf(archivo, "\n%d,%d,%d,%d,%.2f", idV+1,id, codigo, cantidad,precio);
             fclose(archivo);
+            system("pause");
             break;
         case 6:
             system("cls");
@@ -126,15 +130,27 @@ int main()
                 indice = buscar_indice_ventas(ventas, id);
                 ventas->remove(ventas, indice);
                 copia = abrir_archivo("ventas2.txt");
-
+                crea_txt_ventas(ventas, copia);
                 remove("ventas.txt");
                 rename("ventas2.txt", "ventas.txt");
-
+            }else
+            {
+                printf("\nEl ID ingresado no se encuentra en la base de datos.\n");
             }
+            system("pause");
             break;
         case 7:
+            system("cls");
+            printf("Venta\tCliente\tProducto\tCantidad\tPrecio\n\n");
+            imprimir_ventas(ventas);
+            system("pause");
             break;
         case 8:
+            system("cls");
+            printf("Ingrese codigo del producto: ");
+            scanf("%d", &id);
+            imprimir_ventas_producto(ventas, id);
+            system("pause");
             break;
         case 9:
             break;

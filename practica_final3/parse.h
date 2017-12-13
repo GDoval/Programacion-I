@@ -21,7 +21,7 @@ typedef struct
     int id_cliente;
     int codProducto;
     int cantidad;
-    int precioUnitario;
+    float precioUnitario;
 }eVentas;
 
 
