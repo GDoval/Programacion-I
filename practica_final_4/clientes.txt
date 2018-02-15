@@ -1,0 +1,6 @@
+1,Pedro,Izazozozlola,5
+2,Maria,Antonieta,44556677
+4,Juana,Fuana,9782346
+5,Pedrazo,Pedraza,88888888
+6,Esteban,Quito,98423427
+8,Denver,Moscu,66
