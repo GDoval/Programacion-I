@@ -277,8 +277,9 @@ void parsear_cliente_binario(ArrayList* clientes)
             strcpy(aux->apellido, bogus.apellido);
             aux->dni = bogus.dni;
             aux->id = bogus.id;
+            clientes->add(clientes, aux);
         }
-        clientes->add(clientes, aux);
+
     }
     fclose(archivo);
 }
