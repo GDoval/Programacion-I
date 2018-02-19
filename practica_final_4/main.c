@@ -57,13 +57,13 @@ int main()
         case 3:
             system("cls");
             dni = devuelve_dni();
-            validar = baja_cliente(clientes, dni);
+            validar = baja_cliente(clientes_bin, dni);
             if (validar)
             {
-                copia = abrir_archivo_texto("clientes2.txt");
-                crea_txt_cliente(clientes, copia);
-                remove("clientes.txt");
-                rename("clientes2.txt", "clientes.txt");
+                copia = abrir_archivo_texto("clientes2.bin");
+                crea_copia_binario(clientes_bin, copia);
+                remove("clientes.bin");
+                rename("clientes2.bin", "clientes.bin");
                 printf("\n Todo OK\n");
                 system("pause");
             }
