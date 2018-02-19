@@ -250,10 +250,12 @@ void crea_binario(ArrayList* lista)
     int i;
     eCliente* aux;
     FILE* archivo = abrir_archivo_binario("clientes.bin");
+    rewind(archivo);
     for (i = 0; i < lista->len(lista); i++)
     {
         aux = (eCliente*)lista->get(lista, i);
-        fwrite(aux, 1, sizeof(eCliente), archivo);
+        fseek(archivo, 0L, SEEK_END);
+        fwrite(aux, sizeof(eCliente), 1, archivo);
     }
     fclose(archivo);
 }
@@ -262,23 +264,21 @@ void crea_binario(ArrayList* lista)
 void parsear_cliente_binario(ArrayList* clientes)
 {
     FILE* archivo = abrir_archivo_binario("clientes.bin");
-    eCliente* aux = constructor_clientes();
+    eCliente bogus;
     int validar;
-    char auxNombre[100];
-    char auxApellido[100];
-    char auxId[100];
-    char auxDni[100];
+    rewind(archivo);
     while (!feof(archivo))
     {
-        validar = fread(aux, 1, sizeof(eCliente), archivo);
+        validar = fread(&bogus, sizeof(eCliente), 1, archivo);
+        eCliente* aux = constructor_clientes();
         if (validar)
         {
-            strcpy(aux->nombre, auxNombre);
-            strcpy(aux->apellido, auxApellido);
-            aux->dni = atoi(auxDni);
-            aux->id = atoi(auxId);
-            clientes->add(clientes, aux);
+            strcpy(aux->nombre, bogus.nombre);
+            strcpy(aux->apellido, bogus.apellido);
+            aux->dni = bogus.dni;
+            aux->id = bogus.id;
         }
+        clientes->add(clientes, aux);
     }
     fclose(archivo);
 }
@@ -290,7 +290,7 @@ void bogus(ArrayList* clientes)
     char nombre[100];
     char apellido[100];
     int dni, id = 0, i;
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < 3; i++)
     {
         devuelve_nombre(nombre);
         devuelve_apellido(apellido);
@@ -301,4 +301,22 @@ void bogus(ArrayList* clientes)
         aux->dni = dni;
         clientes->add(clientes, aux);
     }
+}
+
+
+void imprimir_binario()
+{
+    eCliente aux;
+    FILE* archivo;
+    int i;
+    archivo = abrir_archivo_binario("clientes.bin");
+    rewind(archivo);
+    while (!feof(archivo))
+    {
+        if (( i = fread(&aux, sizeof(eCliente), 1, archivo)))
+        {
+            printf("%s  %s  %d\n", aux.nombre, aux.apellido, aux.dni);
+        }
+    }
+    fclose(archivo);
 }

@@ -13,7 +13,7 @@ int main()
     FILE* copia;
     int validar;
     parsear_cliente(clientes);
-    parsear_cliente_binario(clientes_bin);
+    //parsear_cliente_binario(clientes_bin);
     while (resp == 's')
     {
         printf("1) Agregar nuevo cliente\n");
@@ -69,10 +69,13 @@ int main()
             }
             break;
         case 4:
-            bogus(clientes_bin);
-            crea_binario(clientes_bin);
+            //bogus(clientes_bin);
+            //crea_binario(clientes);
             parsear_cliente_binario(clientes_bin_def);
+            break;
+        case 5:
             imprimir_clientes(clientes_bin_def);
+            //imprimir_binario();
             break;
         }
     }
