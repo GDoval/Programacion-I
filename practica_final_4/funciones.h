@@ -42,3 +42,4 @@ int buscar_id_cliente(ArrayList*, int);
 int buscar_id_ventas(ArrayList*, int);
 int ordenar_clientes_apellido(eCliente*, eCliente*);
 int buscar_precio(int);
+FILE* abrir_archivo_binario(char*);

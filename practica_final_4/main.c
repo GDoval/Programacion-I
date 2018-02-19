@@ -4,6 +4,8 @@ int main()
 {
     ArrayList* clientes = al_newArrayList();
     ArrayList* ventas = al_newArrayList();
+    ArrayList* clientes_bin = al_newArrayList();
+    ArrayList* clientes_bin_def = al_newArrayList();
     char resp = 's';
     int opcion;
     char nombre[100], apellido[100];
@@ -11,6 +13,7 @@ int main()
     FILE* copia;
     int validar;
     parsear_cliente(clientes);
+    parsear_cliente_binario(clientes_bin);
     while (resp == 's')
     {
         printf("1) Agregar nuevo cliente\n");
@@ -33,7 +36,6 @@ int main()
             dni = devuelve_dni();
             agregar_cliente(clientes, nombre, apellido, dni);
             imprimir_clientes(clientes);
-            resp = 'n';
             break;
         case 2:
             system("cls");
@@ -66,12 +68,13 @@ int main()
                 system("pause");
             }
             break;
-
         case 4:
-            imprimir_clientes(clientes);
+            bogus(clientes_bin);
+            crea_binario(clientes_bin);
+            parsear_cliente_binario(clientes_bin_def);
+            imprimir_clientes(clientes_bin_def);
             break;
         }
     }
-
     return 0;
 }

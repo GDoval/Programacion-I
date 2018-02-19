@@ -117,7 +117,7 @@ void sacarEnter(char vec[]) // borra el enter que queda en la ultima posicion de
 
 void agregar_cliente(ArrayList* lista, char* nombre, char* apellido, int dni)
 {
-    eCliente* aux;
+    eCliente* aux = constructor_clientes();
     int len = lista->len(lista);
     int id = len++;
     FILE* archivo = abrir_archivo_texto("clientes.txt");
@@ -172,7 +172,8 @@ int modifica_clientes(ArrayList* lista, int dni, int dni_viejo, char* nombre, ch
     {
         printf("\n El ID ingresado no se encuentra en el listado\n");
         return 0;
-    }else
+    }
+    else
     {
         return 1;
     }
@@ -220,12 +221,84 @@ int baja_cliente (ArrayList* lista, int dni)
             {
                 lista->remove(lista, i);
                 return 1;
-            }else
+            }
+            else
             {
                 printf("\n Operacion cancelada\n\n");
                 system("pause");
                 return 0;
             }
         }
+    }
+}
+
+
+FILE* abrir_archivo_binario(char* path)
+{
+    FILE* archivo;
+    if ((archivo = fopen(path, "rb+")) == NULL)
+        if((archivo = fopen(path, "wb+")) == NULL)
+        {
+            printf("\nNo se pudo abrir el archivo\n");
+        }
+    return archivo;
+}
+
+
+void crea_binario(ArrayList* lista)
+{
+    int i;
+    eCliente* aux;
+    FILE* archivo = abrir_archivo_binario("clientes.bin");
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = (eCliente*)lista->get(lista, i);
+        fwrite(aux, 1, sizeof(eCliente), archivo);
+    }
+    fclose(archivo);
+}
+
+
+void parsear_cliente_binario(ArrayList* clientes)
+{
+    FILE* archivo = abrir_archivo_binario("clientes.bin");
+    eCliente* aux = constructor_clientes();
+    int validar;
+    char auxNombre[100];
+    char auxApellido[100];
+    char auxId[100];
+    char auxDni[100];
+    while (!feof(archivo))
+    {
+        validar = fread(aux, 1, sizeof(eCliente), archivo);
+        if (validar)
+        {
+            strcpy(aux->nombre, auxNombre);
+            strcpy(aux->apellido, auxApellido);
+            aux->dni = atoi(auxDni);
+            aux->id = atoi(auxId);
+            clientes->add(clientes, aux);
+        }
+    }
+    fclose(archivo);
+}
+
+
+void bogus(ArrayList* clientes)
+{
+    eCliente* aux = constructor_clientes();
+    char nombre[100];
+    char apellido[100];
+    int dni, id = 0, i;
+    for (i = 0; i < 5; i++)
+    {
+        devuelve_nombre(nombre);
+        devuelve_apellido(apellido);
+        dni = devuelve_dni();
+        aux->id = id++;
+        strcpy(aux->nombre, nombre);
+        strcpy(aux->apellido, apellido);
+        aux->dni = dni;
+        clientes->add(clientes, aux);
     }
 }
