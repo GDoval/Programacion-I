@@ -98,11 +98,13 @@ void imprimir_clientes(ArrayList* lista)
 {
     eCliente* aux;
     int i;
+    system("cls");
     for (i = 0; i < lista->len(lista); i++)
     {
         aux = lista->get(lista, i);
-        printf("%s, %d \n", aux->nombre, aux->dni);
+        printf("%d, %s, %s, %d \n", aux->id, aux->nombre, aux->apellido, aux->dni);
     }
+    system("pause");
 }
 
 
@@ -119,7 +121,7 @@ void agregar_cliente(ArrayList* lista, char* nombre, char* apellido, int dni)
 {
     eCliente* aux = constructor_clientes();
     int len = lista->len(lista);
-    int id = len++;
+    int id = 1 + buscar_max_id_cliente(lista);
     FILE* archivo = abrir_archivo_texto("clientes.txt");
     rewind(archivo);
     fseek(archivo, 0L, SEEK_END);
@@ -279,7 +281,6 @@ void parsear_cliente_binario(ArrayList* clientes)
             aux->id = bogus.id;
             clientes->add(clientes, aux);
         }
-
     }
     fclose(archivo);
 }
@@ -320,4 +321,52 @@ void imprimir_binario()
         }
     }
     fclose(archivo);
+}
+
+
+int buscar_max_id_cliente(ArrayList* lista) //Devuelve el ID mayor del ArrayList
+{
+    eCliente* aux;
+    int max = 0;
+    int i;
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = lista->get(lista, i);
+        if (aux->id > max)
+        {
+            max = aux->id;
+        }
+    }
+    return max;
+}
+
+
+void agregar_cliente_binario(ArrayList* lista, char* nombre, char* apellido, int dni) //Funciona
+{
+    eCliente* aux = constructor_clientes();
+    int id = 1 + buscar_max_id_cliente(lista);
+    FILE* archivo = abrir_archivo_binario("clientes.bin");
+    strcpy(aux->apellido, apellido);
+    strcpy(aux->nombre, nombre);
+    aux->dni = dni;
+    aux->id = id;
+    lista->add(lista, aux);
+    rewind(archivo);
+    fseek(archivo, 0L, SEEK_END);
+    fwrite(aux, sizeof(eCliente), 1, archivo);
+    fclose(archivo);
+}
+
+void crea_copia_binario(ArrayList* lista, FILE* copia)
+{
+    int i;
+    eCliente* aux;
+    rewind(copia);
+    for (i = 0; i < lista->len(lista); i++)
+    {
+        aux = (eCliente*)lista->get(lista, i);
+        fseek(copia, 0L, SEEK_END);
+        fwrite(aux, sizeof(eCliente), 1, copia);
+    }
+    fclose(copia);
 }
