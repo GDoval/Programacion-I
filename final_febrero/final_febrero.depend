@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1531857948 source:c:\users\gdoval\desktop\final_febrero\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1531857947 c:\users\gdoval\desktop\final_febrero\arraylist.h
+
+1532023725 source:c:\users\gdoval\desktop\final_febrero\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"ArrayList.h"
+
+1531942624 c:\users\gdoval\desktop\final_febrero\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1532023699 source:c:\users\gdoval\desktop\final_febrero\funciones.c
+	"funciones.h"
+	"ArrayList.h"
+

@@ -1,0 +1,3 @@
+carlos,lopez,22435676,CPU32,11002.64
+alejandro,gutierrez,29448912,LV87,1493.25
+carlos,lopez,22435676,TV12,1302.24
