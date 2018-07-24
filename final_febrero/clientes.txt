@@ -19,4 +19,6 @@ martin,acosta,31003744
 mario,robles,35913391
 ana,sanchez,30000099
 alejandro,gutierrez,29448912
+
 gaston,doval,33712616
+miguel,doval,100

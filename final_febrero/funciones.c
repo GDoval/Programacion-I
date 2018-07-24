@@ -95,6 +95,14 @@ int ordenarPorApellido (void* cliente, void* cliente2) //Funciona bien
 {
     if (strcmp(((eCliente*)cliente)->apellido, ((eCliente*)cliente2)->apellido) > 0)
         return 1;
+    else
+    {
+        if (strcmp(((eCliente*)cliente)->apellido, ((eCliente*)cliente2)->apellido) == 0)
+        {
+            if( ((eCliente*)cliente)->dni < ((eCliente*)cliente2)->dni)
+                return 1;
+        }
+    }
     return 0;
 }
 
