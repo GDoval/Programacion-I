@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1532458246 source:c:\users\gdoval\desktop\practica_productos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"producto.h"
+
+1532458238 source:c:\users\gdoval\desktop\practica_productos\producto.c
+	"producto.h"
+
+1532455315 c:\users\gdoval\desktop\practica_productos\producto.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
