@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1532519464 source:d:\doval.gaston.final.labi\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1532519465 d:\doval.gaston.final.labi\arraylist.h
+	<stdio.h>
+	<stdlib.h>
+
+1532525606 source:d:\doval.gaston.final.labi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Arraylist.h"
+	"funciones.h"
+
+1532526311 source:d:\doval.gaston.final.labi\funciones.c
+	"funciones.h"
+
+1532526254 d:\doval.gaston.final.labi\funciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Arraylist.h"
+
